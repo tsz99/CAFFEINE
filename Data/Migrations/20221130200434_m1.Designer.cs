@@ -4,142 +4,22 @@ using CAFFEINE.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CAFFEINE.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221130200434_m1")]
+    partial class m1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.25")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-            modelBuilder.Entity("CAFFEINE.Data.Caff", b =>
-                {
-                    b.Property<int>("DB_ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Creator")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Day")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Hour")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Minute")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Month")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Year")
-                        .HasColumnType("int");
-
-                    b.HasKey("DB_ID");
-
-                    b.ToTable("Caffs");
-                });
-
-            modelBuilder.Entity("CAFFEINE.Data.Caption", b =>
-                {
-                    b.Property<int>("DB_ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("CiffDB_ID")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Text")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("DB_ID");
-
-                    b.HasIndex("CiffDB_ID");
-
-                    b.ToTable("Captions");
-                });
-
-            modelBuilder.Entity("CAFFEINE.Data.Ciff", b =>
-                {
-                    b.Property<int>("DB_ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("CaffDB_ID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Duration")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Height")
-                        .HasColumnType("int");
-
-                    b.Property<byte[]>("Pixels")
-                        .HasColumnType("varbinary(max)");
-
-                    b.Property<int>("Width")
-                        .HasColumnType("int");
-
-                    b.HasKey("DB_ID");
-
-                    b.HasIndex("CaffDB_ID");
-
-                    b.ToTable("Ciffs");
-                });
-
-            modelBuilder.Entity("CAFFEINE.Data.Comment", b =>
-                {
-                    b.Property<int>("DB_ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("CaffDB_ID")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Creator")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Text")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("DB_ID");
-
-                    b.HasIndex("CaffDB_ID");
-
-                    b.ToTable("Comments");
-                });
-
-            modelBuilder.Entity("CAFFEINE.Data.Tag", b =>
-                {
-                    b.Property<int>("DB_ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("CiffDB_ID")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Text")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("DB_ID");
-
-                    b.HasIndex("CiffDB_ID");
-
-                    b.ToTable("Tags");
-                });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
@@ -339,34 +219,6 @@ namespace CAFFEINE.Data.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
-                });
-
-            modelBuilder.Entity("CAFFEINE.Data.Caption", b =>
-                {
-                    b.HasOne("CAFFEINE.Data.Ciff", null)
-                        .WithMany("Captions")
-                        .HasForeignKey("CiffDB_ID");
-                });
-
-            modelBuilder.Entity("CAFFEINE.Data.Ciff", b =>
-                {
-                    b.HasOne("CAFFEINE.Data.Caff", null)
-                        .WithMany("Ciffs")
-                        .HasForeignKey("CaffDB_ID");
-                });
-
-            modelBuilder.Entity("CAFFEINE.Data.Comment", b =>
-                {
-                    b.HasOne("CAFFEINE.Data.Caff", null)
-                        .WithMany("Comments")
-                        .HasForeignKey("CaffDB_ID");
-                });
-
-            modelBuilder.Entity("CAFFEINE.Data.Tag", b =>
-                {
-                    b.HasOne("CAFFEINE.Data.Ciff", null)
-                        .WithMany("Tags")
-                        .HasForeignKey("CiffDB_ID");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

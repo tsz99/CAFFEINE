@@ -1,8 +1,142 @@
-﻿@{
+﻿@using CAFFEINE.Data
+@model List<Caff>
+@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@{
     ViewData["Title"] = "Home Page";
 }
+@Html.RenderUnobtrusiveAjaxScript()
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+@if (User.Identity.IsAuthenticated)
+{
+    <div class="container">
+        <div id="modal-placeholder"></div>
+
+        <div class="row">
+            <section class="col-2">
+                <h2>Search Caff </h2>
+                @using (Html.AjaxBeginForm("Search", "Home", new AjaxOptions
+             {
+                 OnSuccess = "onSuccess",
+                 HttpMethod = "Post"
+             }))
+                {
+                }
+            </section>
+            <section class="col-10">
+                <h1>Caffs</h1>
+
+                <p>
+                    <a href="#" id="createNewButton" class="btn btn-primary">Create New Recipe</a>
+                </p>
+
+                <div class="row row-cols-1 row-cols-lg-2 g-3">
+                    @foreach (var item in Model)
+                    {
+                        <div class="col">
+                            <div class="card shadow-sm">
+                                @*<img id="detailsButton_@item.DB_ID" class="card-img-top detailsButton" src=@item.Image alt="Card image cap">*@
+                                <div id="detailsButton_@item.DB_ID" class="card-body detailsButton">
+                                    <h5 class="card-title ">@item.Creator</h5>
+                                    <div class="card-text ">@item.Year.@item.Month.@item.Day @item.Hour:@item.Minute</div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="btn-group">
+                                                <button type="button" id="editButton_@item.DB_ID" class="btn btn-sm btn-outline-secondary editButton">Edit</button>
+                                                <button type="button" id="deleteButton_@item.DB_ID" class="btn btn-sm btn-outline-secondary deleteButton">Delete</button>
+                                            <button type="button" id="downloadButton_@item.DB_ID" class="btn btn-sm btn-outline-secondary downloadButton">Download</button>
+                                        </div>
+                                        <small class="text-muted">@item.ReadyInMinutes min</small>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <small class="text-muted text-center">@item.SourceName</small>
+                                </div>
+                            </div>
+                        </div>
+
+                    }
+                </div>
+
+            </section>
+        </div>
+    </div>
+}
+else
+{
+    <div class="container">
+        <h1 class="display-4">Welcome</h1>
+        <p>To use the application please <a asp-area="Identity" asp-page="/Account/Login">Login</a> or if you do not have an account <a asp-area="Identity" asp-page="/Account/Register">Register</a>.</p>
+    </div>
+}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js">
+
+</script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<script>
+    $("#createNewButton").click(function () {
+        let url = new URL(location.origin + '@Url.Action("Create", "Home")');
+        $.get(url).done(function (data) {
+            $('#modal-placeholder').html(data);
+            $('#modal-placeholder > .modal').modal('show');
+        });
+    });
+
+    $(".editButton").click(function (e) {
+        let idVal = e.currentTarget.id.split('_')[1];
+        let url = new URL(location.origin + '@Url.Action("Edit", "Home")');
+        url.searchParams.append('id', idVal);
+        $.get(url).done(function (data) {
+            $('#modal-placeholder').html(data);
+            $('#modal-placeholder > .modal').modal('show');
+        });
+    });
+
+    $(".detailsButton").click(function (e) {
+        let idVal = e.currentTarget.id.split('_')[1];
+        let url = new URL(location.origin + '@Url.Action("Details", "Home")');
+        url.searchParams.append('id', idVal);
+        $.get(url).done(function (data) {
+            $('#modal-placeholder').html(data);
+            $('#modal-placeholder > .modal').modal('show');
+        });
+    });
+
+    $(".deleteButton").click(function (e) {
+        let idVal = e.currentTarget.id.split('_')[1];
+        let url = new URL(location.origin + '@Url.Action("Delete", "Home")');
+        url.searchParams.append('id', idVal);
+        $.get(url).done(function (data) {
+            $('#modal-placeholder').html(data);
+            $('#modal-placeholder > .modal').modal('show');
+        });
+    });
+
+
+    $("#btnHideModal").click(function () {
+        $("#modal-placeholder").modal('hide');
+    });
+
+    $(".downloadButton").click(function (e) {
+        let idVal = e.currentTarget.id.split('_')[1];
+
+        var a = document.createElement("a");
+        document.body.appendChild(a);
+        a.style = "display: none";
+        let url = new URL(location.origin + '@Url.Action("Download", "Home")');
+        url.searchParams.append('id', idVal);
+        a.href = url;
+        a.download = 'Recipe.txt';
+        a.click();
+        document.body.removeChild(a);
+    });
+
+    function onSuccess(){
+        location.reload();
+    }
+
+
+</script>

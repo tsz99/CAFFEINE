@@ -4,14 +4,16 @@ using CAFFEINE.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CAFFEINE.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221130200922_m1_v1")]
+    partial class m1_v1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -59,7 +61,7 @@ namespace CAFFEINE.Data.Migrations
                     b.Property<int?>("CiffDB_ID")
                         .HasColumnType("int");
 
-                    b.Property<string>("Text")
+                    b.Property<string>("text")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("DB_ID");
@@ -344,7 +346,7 @@ namespace CAFFEINE.Data.Migrations
             modelBuilder.Entity("CAFFEINE.Data.Caption", b =>
                 {
                     b.HasOne("CAFFEINE.Data.Ciff", null)
-                        .WithMany("Captions")
+                        .WithMany("Caption")
                         .HasForeignKey("CiffDB_ID");
                 });
 

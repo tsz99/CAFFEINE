@@ -1,4 +1,6 @@
-﻿using CAFFEINE.Models;
+﻿using CAFFEINE.Data;
+using CAFFEINE.Models;
+using CAFFEINE.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -12,15 +14,20 @@ namespace CAFFEINE.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly CaffService _caffService;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger,CaffService caffService)
         {
             _logger = logger;
+            _caffService = caffService;
+
         }
 
         public IActionResult Index()
         {
-            return View();
+            var caff = _caffService.ParseCaff();
+            List<Caff> caffList = new List<Caff>() { caff };
+            return View(caffList);
         }
 
         public IActionResult Privacy()

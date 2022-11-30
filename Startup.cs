@@ -1,5 +1,7 @@
+using AspNetCore.Unobtrusive.Ajax;
 using CAFFEINE.Areas.Identity;
 using CAFFEINE.Data;
+using CAFFEINE.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -38,6 +40,8 @@ namespace CAFFEINE
             services.AddScoped<IUserClaimsPrincipalFactory<IdentityUser>, AdditionalUserClaimsPrincipalFactory>();
             services.AddAuthorization(options => options.AddPolicy("TwoFactorEnabled", x => x.RequireClaim("amr", "mfa")));
             services.AddControllersWithViews();
+            services.AddScoped<CaffService>();
+            services.AddUnobtrusiveAjax(useCdn: true, injectScriptIfNeeded: false);
             services.AddRazorPages();
         }
 
