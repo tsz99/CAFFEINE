@@ -1,0 +1,42 @@
+﻿@model DetailsVM;
+@{
+    Layout = null;
+}
+@using System.Web;
+@using CAFFEINE.ViewModels
+
+<div class="modal fade" tabindex="-1" id="detailsModal"
+     data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">×</button>
+            </div>
+            <div class="modal-body m-3">
+                <form>
+                    <h5>Details:</h5>
+                    <h5 class="card-title ">Creator: @Model.CaffCreator</h5>
+                    <h6 class="card-title ">Caption: @Model.Caption</h6>
+                    <h5>Tags:</h5>
+                     <div class="d-flex flex-wrap">
+                        @foreach (var tag in Model.Tags)
+                        {
+                            <div class="card-text ">@tag.Text</div>
+                        }
+                      </div>
+                    <h5>Comments:</h5>
+                    <div class="d-flex flex-wrap">
+                        @foreach (var comment in Model.Comments)
+                        {
+                            <div>@comment.DT_Created @comment.Creator: @comment.Text</div>
+                            <br/>
+                        }
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" data-dismiss="modal" class="btn btn-primary button button4">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>

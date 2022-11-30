@@ -15,6 +15,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CAFFEINE.Repositories;
 
 namespace CAFFEINE
 {
@@ -41,6 +42,7 @@ namespace CAFFEINE
             services.AddAuthorization(options => options.AddPolicy("TwoFactorEnabled", x => x.RequireClaim("amr", "mfa")));
             services.AddControllersWithViews();
             services.AddScoped<CaffService>();
+            services.AddScoped<CaffRepository>();
             services.AddUnobtrusiveAjax(useCdn: true, injectScriptIfNeeded: false);
             services.AddRazorPages();
         }

@@ -11,7 +11,6 @@ namespace CAFFEINE.Data
         public DbSet<Caff> Caffs { get; set; }
         public DbSet<Ciff> Ciffs { get; set; }
         public DbSet<Comment> Comments { get; set; }
-        public DbSet<Caption> Captions { get; set; }
         public DbSet<Tag> Tags { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
