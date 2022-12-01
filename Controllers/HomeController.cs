@@ -16,6 +16,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 
 namespace CAFFEINE.Controllers
 {
@@ -25,7 +26,7 @@ namespace CAFFEINE.Controllers
         private readonly CaffService _caffService;
         private readonly CaffRepository _caffRepository;
 
-        public HomeController(ILogger<HomeController> logger,CaffService caffService, CaffRepository caffrepository)
+        public HomeController(ILogger<HomeController> logger, CaffService caffService, CaffRepository caffrepository)
         {
             _logger = logger;
             _caffService = caffService;
@@ -33,22 +34,49 @@ namespace CAFFEINE.Controllers
 
         }
 
-        public IActionResult Index()
+        public IActionResult Index(string creator = "", string caption = "")
         {
 
-            //var caff = _caffService.ParseCaff();
-            var caffs = _caffRepository.GetAllCaff();
-            foreach (var item in caffs)
+            if (string.IsNullOrEmpty(creator) && string.IsNullOrEmpty(caption))
             {
-                using (Image image = Image.FromStream(new MemoryStream(item.Ciffs[0].Pixels)))
+                var caffs = _caffRepository.GetAllCaff();
+                return View(new IndexVM()
+                {
+                    creator = creator,
+                    caption = caption,
+                    caffs = caffs
+                });
+            }
+            else
+            {
+                List<Caff> caffsFiltered = _caffRepository.GetCaffsByFilter(creator, caption);
+                return View(new IndexVM()
+                {
+                    creator = creator,
+                    caption = caption,
+                    caffs = caffsFiltered
+                });
+            }
+
+            /*  var caff = _caffService.ParseCaff();
+              _caffRepository.SaveCaff(caff);*/
+
+            /*foreach (var item in caffs)
+            {
+                Stream stream = new MemoryStream();
+                stream.Write(item.Ciffs[0].Pixels, 0, item.Ciffs[0].Pixels.Length);
+                using (Image image = Image.FromStream(stream, true))
                 {
                     item.Ciffs[0].Png = image;
+                  
                 }
-            }
-            return View();
+            }*/
+
         }
 
-          
+        
+
+
         [HttpGet]
         public IActionResult Comment(int id)
         {
@@ -60,7 +88,7 @@ namespace CAFFEINE.Controllers
             {
                 return BadRequest();
             }
-                
+
 
         }
 
@@ -68,7 +96,7 @@ namespace CAFFEINE.Controllers
         public IActionResult Details(int id)
         {
             var caff = _caffRepository.GetCaffFromId(id);
-            if (caff!= null && caff.Ciffs!=null)
+            if (caff != null && caff.Ciffs != null)
             {
                 return PartialView("~/Views/Home/PartialViews/Details.cshtml", new DetailsVM() { Comments = _caffRepository.GetAllCommentToCaff(id), CaffCreator = caff.Creator, Caption = caff.Ciffs[0].Caption, Tags = caff.Ciffs[0].Tags });
             }
@@ -135,7 +163,7 @@ namespace CAFFEINE.Controllers
 
             //TODO: giffé
 
-            
+
             var stream = new MemoryStream(Encoding.ASCII.GetBytes(""));
             return new FileStreamResult(stream, new MediaTypeHeaderValue("text/plain"))
             {
@@ -144,9 +172,45 @@ namespace CAFFEINE.Controllers
         }
 
 
-        public IActionResult Privacy()
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Upload()
         {
-            return View();
+            IFormFile httpPostedFile = this.Request.Form.Files[0];
+            BinaryReader b = new BinaryReader(httpPostedFile.OpenReadStream());
+            byte[] binData = b.ReadBytes((int)httpPostedFile.Length);
+            Caff caff = new Caff()
+            {
+                originalContent = binData,
+                Creator = User.Identity.Name
+            };
+            _caffRepository.SaveCaff(caff);
+            return Json(new { success = true });
+        }
+
+
+
+        [HttpGet]
+        public IActionResult UploadGet()
+        {
+            return PartialView("~/Views/Home/PartialViews/Upload.cshtml");
+        }
+
+
+        [HttpPost]
+        public IActionResult Search()
+        {
+            var creator = this.Request.Form["Creator"].ToString();
+            var caption = this.Request.Form["Caption"].ToString();
+            return RedirectToAction("Index", "Home", new { creator = creator, caption = caption });
+        }
+
+
+        [HttpGet]
+        public IActionResult Users()
+        {
+            var users = _caffRepository.GetUsers();
+            return View(new UsersVM() { users = users});
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

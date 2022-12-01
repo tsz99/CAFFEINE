@@ -16,7 +16,6 @@ namespace CAFFEINE.Data
         public int Hour { get; set; }
         public int Minute { get; set; }
         public List<Comment> Comments { get; set; }
-
-
+        public byte[] originalContent { get; set; } 
     }
 }

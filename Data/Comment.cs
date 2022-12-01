@@ -9,7 +9,6 @@ namespace CAFFEINE.Data
         [Key]
         public int DB_ID { get; set; }
         public string Creator { get; set; }
-        public DateTime Created { get; set; }
         public string Text { get; set; }
         [ForeignKey("Caffs")]
         public int CaffDB_ID { get; set; }

@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Xml.Linq;
 
 namespace CAFFEINE.Repositories
 {
@@ -52,5 +53,20 @@ namespace CAFFEINE.Repositories
             _db.SaveChanges();
         }
 
+        public List<Caff> GetCaffsByFilter(string creator, string caption)
+        {
+            return _db.Caffs
+                           .Where(x => x.Creator.ToLower().Contains(creator.ToLower())).Include(x => x.Ciffs)
+                           .Where(x => x.Ciffs.Any(y => y.Caption.ToLower().Contains(caption.ToLower())))
+                           .ToList();
+
+        }
+
+        public List<UserData> GetUsers()
+        {
+            var userdatas = _db.Users.Select(x => new UserData (){UserName = x.Email, PhoneNumber = x.PhoneNumber}).ToList();
+            return userdatas;
+        }
+      
     }
 }

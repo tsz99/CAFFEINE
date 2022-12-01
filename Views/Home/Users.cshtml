@@ -1,0 +1,28 @@
+﻿@using CAFFEINE.ViewModels;
+@model UsersVM
+@{
+    ViewData["Title"] = "User Data";
+}
+<h1>@ViewData["Title"]</h1>
+
+@if (User.Identity.IsAuthenticated)
+{
+     <div class="container">
+         <table>
+             <thead>
+                 <th>Name</th>
+                 <th>Phone number</th>
+             </thead>
+             <tbody>
+                  @foreach (var item in Model.users)
+                  {
+                    <tr>
+                        <td>@item.UserName</td>
+                        <td>@item.PhoneNumber</td>
+                    </tr>
+                  }
+    </tbody>
+         </table>
+
+     </div>
+}
