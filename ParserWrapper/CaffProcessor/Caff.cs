@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -9,7 +10,9 @@ namespace Parsing
 {
     public class Caff
     {
-        private const string dllPath = @".\caff.dll";
+
+
+        private const string dllPath = "caff.dll";
 
         [DllImport(dllPath)]
         public static extern void parseCAFF(byte[] bytes, int length, byte[] folderName);

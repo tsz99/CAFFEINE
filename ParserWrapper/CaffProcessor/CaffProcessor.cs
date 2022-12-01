@@ -11,7 +11,7 @@ namespace Parsing
     {
         public static CaffResult ParseCaff(byte[] caff, string folderName)
         {
-            Caff.parseCAFF(caff, caff.Length, Encoding.ASCII.GetBytes("example"));
+            Caff.parseCAFF(caff, caff.Length, Encoding.ASCII.GetBytes(folderName));
 
             byte[] returnBuffer;
 

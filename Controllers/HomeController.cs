@@ -179,6 +179,9 @@ namespace CAFFEINE.Controllers
             IFormFile httpPostedFile = this.Request.Form.Files[0];
             BinaryReader b = new BinaryReader(httpPostedFile.OpenReadStream());
             byte[] binData = b.ReadBytes((int)httpPostedFile.Length);
+            
+
+            Parsing.CaffProcessor.ParseCaff(binData, "caffs");
             Caff caff = new Caff()
             {
                 originalContent = binData,

@@ -7,7 +7,9 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace CAFFEINE
@@ -22,6 +24,10 @@ namespace CAFFEINE
                 scope.ServiceProvider.GetRequiredService<ApplicationDbContext>().Database.Migrate();
             }
             Host.Run();
+
+           
+
+
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
