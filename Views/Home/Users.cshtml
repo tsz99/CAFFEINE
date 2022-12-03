@@ -1,28 +1,38 @@
-﻿@using CAFFEINE.ViewModels;
-@model UsersVM
+﻿@using CAFFEINE.Data;
+@model List<UserData>
 @{
     ViewData["Title"] = "User Data";
 }
 <h1>@ViewData["Title"]</h1>
-
+@Html.RenderUnobtrusiveAjaxScript()
 @if (User.Identity.IsAuthenticated)
 {
-     <div class="container">
-         <table>
-             <thead>
-                 <th>Name</th>
-                 <th>Phone number</th>
-             </thead>
-             <tbody>
-                  @foreach (var item in Model.users)
-                  {
-                    <tr>
-                        <td>@item.UserName</td>
-                        <td>@item.PhoneNumber</td>
-                    </tr>
-                  }
-    </tbody>
-         </table>
+    @using (Html.AjaxBeginForm("SaveUsers", "Home", new AjaxOptions
+                {
+                    HttpMethod = "Post"
+                }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="container">
+            <table>
+                <thead>
+                    <th>Name</th>
+                    <th>Phone number</th>
+                </thead>
+                <tbody>
+                    @for (int i = 0; i < Model.Count; i++)
+                    {
+                        <tr>
 
-     </div>
+                            <td> @Html.HiddenFor(model => model[i].UserName)</td>
+                            <td> @Html.DisplayTextFor(model => model[i].UserName)</td>
+                            <td> @Html.TextBoxFor(model =>  model[i].PhoneNumber) </td>
+                            <td> @Html.CheckBoxFor(model =>  model[i].isAdmin)    </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <button type="submit" class="btn btn-primary button button4">Save</button>
+        </div>
+    }
 }
