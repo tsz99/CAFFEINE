@@ -1,8 +1,10 @@
 ﻿using CAFFEINE.Data;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Xml.Linq;
 
 namespace CAFFEINE.Repositories
@@ -10,10 +12,12 @@ namespace CAFFEINE.Repositories
     public class CaffRepository
     {
         private ApplicationDbContext _db;
+        UserManager<IdentityUser> userManager;
 
-        public CaffRepository(ApplicationDbContext _context)
+        public CaffRepository(ApplicationDbContext _context, UserManager<IdentityUser> userManager)
         {
             _db = _context;
+            this.userManager = userManager;
         }
 
         public int SaveCaff(Caff caff)
@@ -62,10 +66,45 @@ namespace CAFFEINE.Repositories
 
         }
 
-        public List<UserData> GetUsers()
+        public async Task<List<UserData>> GetUsers()
         {
-            var userdatas = _db.Users.Select(x => new UserData (){UserName = x.Email, PhoneNumber = x.PhoneNumber}).ToList();
-            return userdatas;
+            var userdatas = _db.Users.ToList();
+            List<UserData>  users = new List<UserData>();
+            foreach (var user in userdatas)
+            {
+                bool isAdmin = await userManager.IsInRoleAsync(user, "Admin");
+                users.Add(new UserData()
+                {
+                    isAdmin = isAdmin,
+                    PhoneNumber = user.PhoneNumber,
+                    UserName = user.UserName,
+                });
+
+            }
+            return users;
+        }
+
+        public async Task UpdateUsers(List<UserData> users)
+        {
+            foreach (var item in users)
+            {
+                var user = _db.Users.FirstOrDefault(x => x.UserName == item.UserName);
+                if(user != null)
+                {
+                    user.UserName = item.UserName;
+                    _db.Users.Update(user);
+                    var userRoles = await userManager.GetRolesAsync(user);
+                    if (item.isAdmin && !userRoles.Contains("Admin"))
+                    {
+                        await userManager.AddToRoleAsync(user, "Admin");
+                    }
+                    else if (!item.isAdmin && userRoles.Contains("Admin"))
+                    {
+                        await userManager.RemoveFromRoleAsync(user, "Admin");
+                    }
+                    _db.SaveChanges();
+                }
+            }
         }
       
     }

@@ -210,10 +210,18 @@ namespace CAFFEINE.Controllers
 
 
         [HttpGet]
-        public IActionResult Users()
+        public async Task<IActionResult> Users()
         {
-            var users = _caffRepository.GetUsers();
-            return View(new UsersVM() { users = users});
+            List<UserData> users = await _caffRepository.GetUsers();
+            return View(users);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> SaveUsers(List<UserData> users)
+        {
+            await _caffRepository.UpdateUsers(users);
+            return RedirectToAction("Users", "Home");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

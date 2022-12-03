@@ -11,11 +11,16 @@ namespace CAFFEINE.Areas.Identity
     public class AdditionalUserClaimsPrincipalFactory :
         UserClaimsPrincipalFactory<IdentityUser>
     {
+        private UserManager<IdentityUser> userManager;
+        private RoleManager<IdentityRole> roleManager;
         public AdditionalUserClaimsPrincipalFactory(
             UserManager<IdentityUser> userManager,
+            RoleManager<IdentityRole> roleManager,
             IOptions<IdentityOptions> optionsAccessor)
             : base(userManager, optionsAccessor)
         {
+            this.userManager = userManager;
+            this.roleManager = roleManager;
         }
 
         public async override Task<ClaimsPrincipal> CreateAsync(IdentityUser user)
@@ -23,6 +28,11 @@ namespace CAFFEINE.Areas.Identity
             var principal = await base.CreateAsync(user);
             var identity = (ClaimsIdentity)principal.Identity;
 
+            var userRoles = await userManager.GetRolesAsync(user);
+            if (!userRoles.Contains("Member"))
+            {
+                await userManager.AddToRoleAsync(user, "Member");
+            }
             var claims = new List<Claim>();
 
             if (user.TwoFactorEnabled)
