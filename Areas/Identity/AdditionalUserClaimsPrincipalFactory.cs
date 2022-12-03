@@ -43,8 +43,16 @@ namespace CAFFEINE.Areas.Identity
             {
                 claims.Add(new Claim("amr", "pwd"));
             }
+            if(await userManager.IsInRoleAsync(user, "Admin"))
+            {
+                claims.Add(new Claim("Admin", "Admin"));
+            }
+            if (await userManager.IsInRoleAsync(user, "Member"))
+            {
+                claims.Add(new Claim("Member", "Member"));
+            }
 
-            
+
             identity.AddClaims(claims);
             return principal;
         }

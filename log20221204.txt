@@ -1,0 +1,2012 @@
+2022-12-04 01:24:47.167 +02:00 [INF] Entity Framework Core 3.1.25 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2022-12-04 01:24:47.973 +02:00 [INF] Executed DbCommand (47ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2022-12-04 01:24:48.063 +02:00 [INF] Executed DbCommand (47ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2022-12-04 01:24:48.070 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2022-12-04 01:24:48.078 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2022-12-04 01:24:48.094 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2022-12-04 01:24:48.126 +02:00 [INF] No migrations were applied. The database is already up to date.
+2022-12-04 01:24:48.184 +02:00 [INF] User profile is available. Using 'C:\Users\tamas\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-12-04 01:24:48.367 +02:00 [INF] Entity Framework Core 3.1.25 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2022-12-04 01:24:49.002 +02:00 [INF] Executed DbCommand (84ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2022-12-04 01:24:49.115 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2022-12-04 01:24:49.508 +02:00 [INF] Now listening on: https://localhost:5001
+2022-12-04 01:24:49.508 +02:00 [INF] Now listening on: http://localhost:5000
+2022-12-04 01:24:49.512 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-12-04 01:24:49.512 +02:00 [INF] Hosting environment: Development
+2022-12-04 01:24:49.512 +02:00 [INF] Content root path: C:\Users\tamas\source\repos\Caffeine
+2022-12-04 01:24:50.520 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5001/ - -
+2022-12-04 01:24:50.661 +02:00 [INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Host: localhost:5001
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.62
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9,ro;q=0.8,hu;q=0.7,de;q=0.6
+Cookie: [Redacted]
+Upgrade-Insecure-Requests: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-user: [Redacted]
+sec-fetch-dest: [Redacted]
+2022-12-04 01:24:50.742 +02:00 [INF] Executing endpoint 'CAFFEINE.Controllers.HomeController.Index (CAFFEINE)'
+2022-12-04 01:24:50.783 +02:00 [INF] Route matched with {action = "Index", controller = "Home", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(System.String, System.String) on controller CAFFEINE.Controllers.HomeController (CAFFEINE).
+2022-12-04 01:24:50.823 +02:00 [INF] 04/12/2022 01:24:50 test2@test.com CAFFEINE.Controllers.HomeController.Index
+2022-12-04 01:24:50.884 +02:00 [INF] Entity Framework Core 3.1.25 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2022-12-04 01:24:51.140 +02:00 [INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[DB_ID], [c].[gifContent], [c].[Creator], [c].[Day], [c].[Hour], [c].[Minute], [c].[Month], [c].[Year], [t0].[DB_ID], [t0].[CaffDB_ID], [t0].[Caption], [t0].[Duration], [t0].[Height], [t0].[Pixels], [t0].[Width], [t0].[DB_ID0], [t0].[CiffDB_ID], [t0].[Text], [c1].[DB_ID], [c1].[CaffDB_ID], [c1].[Creator], [c1].[DT_Created], [c1].[Text]
+FROM [Caffs] AS [c]
+LEFT JOIN (
+    SELECT [c0].[DB_ID], [c0].[CaffDB_ID], [c0].[Caption], [c0].[Duration], [c0].[Height], [c0].[Pixels], [c0].[Width], [t].[DB_ID] AS [DB_ID0], [t].[CiffDB_ID], [t].[Text]
+    FROM [Ciffs] AS [c0]
+    LEFT JOIN [Tags] AS [t] ON [c0].[DB_ID] = [t].[CiffDB_ID]
+) AS [t0] ON [c].[DB_ID] = [t0].[CaffDB_ID]
+LEFT JOIN [Comments] AS [c1] ON [c].[DB_ID] = [c1].[CaffDB_ID]
+ORDER BY [c].[DB_ID], [t0].[DB_ID], [t0].[DB_ID0], [c1].[DB_ID]
+2022-12-04 01:24:51.300 +02:00 [INF] Executing ViewResult, running view Index.
+2022-12-04 01:24:51.664 +02:00 [INF] Executed ViewResult - view Index executed in 363.1248ms.
+2022-12-04 01:24:51.675 +02:00 [INF] Executed action CAFFEINE.Controllers.HomeController.Index (CAFFEINE) in 890.8511ms
+2022-12-04 01:24:51.676 +02:00 [INF] Executed endpoint 'CAFFEINE.Controllers.HomeController.Index (CAFFEINE)'
+2022-12-04 01:24:51.679 +02:00 [INF] Response:
+StatusCode: 200
+Content-Type: text/html; charset=utf-8
+Cache-Control: [Redacted]
+Pragma: [Redacted]
+2022-12-04 01:24:51.892 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5001/ - - - 200 - text/html;+charset=utf-8 1388.6862ms
+2022-12-04 01:24:51.918 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5001/bootstrap/js/bootstrap.min.js - -
+2022-12-04 01:24:51.918 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_framework/aspnetcore-browser-refresh.js - -
+2022-12-04 01:24:51.918 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_vs/browserLink - -
+2022-12-04 01:24:51.925 +02:00 [INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /bootstrap/js/bootstrap.min.js
+Accept: */*
+Host: localhost:5001
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.62
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9,ro;q=0.8,hu;q=0.7,de;q=0.6
+Cookie: [Redacted]
+Referer: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+2022-12-04 01:24:51.928 +02:00 [INF] Response:
+StatusCode: 404
+2022-12-04 01:24:51.935 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 16.9347ms
+2022-12-04 01:24:51.935 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5001/bootstrap/js/bootstrap.min.js - - - 404 0 - 17.0351ms
+2022-12-04 01:24:52.000 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 81.4405ms
+2022-12-04 01:24:54.500 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5001/ - -
+2022-12-04 01:24:54.503 +02:00 [INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Host: localhost:5001
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.62
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9,ro;q=0.8,hu;q=0.7,de;q=0.6
+Cache-Control: max-age=0
+Cookie: [Redacted]
+Upgrade-Insecure-Requests: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-user: [Redacted]
+sec-fetch-dest: [Redacted]
+2022-12-04 01:24:54.524 +02:00 [INF] Executing endpoint 'CAFFEINE.Controllers.HomeController.Index (CAFFEINE)'
+2022-12-04 01:24:54.524 +02:00 [INF] Route matched with {action = "Index", controller = "Home", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(System.String, System.String) on controller CAFFEINE.Controllers.HomeController (CAFFEINE).
+2022-12-04 01:24:54.525 +02:00 [INF] 04/12/2022 01:24:54 test2@test.com CAFFEINE.Controllers.HomeController.Index
+2022-12-04 01:24:54.525 +02:00 [INF] Entity Framework Core 3.1.25 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2022-12-04 01:24:54.529 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[DB_ID], [c].[gifContent], [c].[Creator], [c].[Day], [c].[Hour], [c].[Minute], [c].[Month], [c].[Year], [t0].[DB_ID], [t0].[CaffDB_ID], [t0].[Caption], [t0].[Duration], [t0].[Height], [t0].[Pixels], [t0].[Width], [t0].[DB_ID0], [t0].[CiffDB_ID], [t0].[Text], [c1].[DB_ID], [c1].[CaffDB_ID], [c1].[Creator], [c1].[DT_Created], [c1].[Text]
+FROM [Caffs] AS [c]
+LEFT JOIN (
+    SELECT [c0].[DB_ID], [c0].[CaffDB_ID], [c0].[Caption], [c0].[Duration], [c0].[Height], [c0].[Pixels], [c0].[Width], [t].[DB_ID] AS [DB_ID0], [t].[CiffDB_ID], [t].[Text]
+    FROM [Ciffs] AS [c0]
+    LEFT JOIN [Tags] AS [t] ON [c0].[DB_ID] = [t].[CiffDB_ID]
+) AS [t0] ON [c].[DB_ID] = [t0].[CaffDB_ID]
+LEFT JOIN [Comments] AS [c1] ON [c].[DB_ID] = [c1].[CaffDB_ID]
+ORDER BY [c].[DB_ID], [t0].[DB_ID], [t0].[DB_ID0], [c1].[DB_ID]
+2022-12-04 01:24:54.548 +02:00 [INF] Executing ViewResult, running view Index.
+2022-12-04 01:24:54.571 +02:00 [INF] Executed ViewResult - view Index executed in 22.6647ms.
+2022-12-04 01:24:54.571 +02:00 [INF] Executed action CAFFEINE.Controllers.HomeController.Index (CAFFEINE) in 46.827ms
+2022-12-04 01:24:54.571 +02:00 [INF] Executed endpoint 'CAFFEINE.Controllers.HomeController.Index (CAFFEINE)'
+2022-12-04 01:24:54.571 +02:00 [INF] Response:
+StatusCode: 200
+Content-Type: text/html; charset=utf-8
+Cache-Control: [Redacted]
+Pragma: [Redacted]
+2022-12-04 01:24:54.741 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5001/ - - - 200 - text/html;+charset=utf-8 240.4440ms
+2022-12-04 01:24:54.765 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5001/bootstrap/js/bootstrap.min.js - -
+2022-12-04 01:24:54.767 +02:00 [INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /bootstrap/js/bootstrap.min.js
+Accept: */*
+Host: localhost:5001
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.62
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9,ro;q=0.8,hu;q=0.7,de;q=0.6
+Cookie: [Redacted]
+Referer: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+2022-12-04 01:24:54.767 +02:00 [INF] Response:
+StatusCode: 404
+2022-12-04 01:24:54.767 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5001/bootstrap/js/bootstrap.min.js - - - 404 0 - 1.9538ms
+2022-12-04 01:24:54.774 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_vs/browserLink - -
+2022-12-04 01:24:54.774 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_framework/aspnetcore-browser-refresh.js - -
+2022-12-04 01:24:54.775 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 0.6335ms
+2022-12-04 01:24:54.789 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 15.0279ms
+2022-12-04 01:28:00.778 +02:00 [INF] Entity Framework Core 3.1.25 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2022-12-04 01:28:01.470 +02:00 [INF] Executed DbCommand (44ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2022-12-04 01:28:01.538 +02:00 [INF] Executed DbCommand (37ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2022-12-04 01:28:01.542 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2022-12-04 01:28:01.542 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2022-12-04 01:28:01.554 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2022-12-04 01:28:01.586 +02:00 [INF] No migrations were applied. The database is already up to date.
+2022-12-04 01:28:01.648 +02:00 [INF] User profile is available. Using 'C:\Users\tamas\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-12-04 01:28:01.808 +02:00 [INF] Entity Framework Core 3.1.25 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2022-12-04 01:28:02.443 +02:00 [INF] Executed DbCommand (78ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2022-12-04 01:28:02.560 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2022-12-04 01:28:03.008 +02:00 [INF] Now listening on: https://localhost:5001
+2022-12-04 01:28:03.008 +02:00 [INF] Now listening on: http://localhost:5000
+2022-12-04 01:28:03.013 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-12-04 01:28:03.013 +02:00 [INF] Hosting environment: Development
+2022-12-04 01:28:03.013 +02:00 [INF] Content root path: C:\Users\tamas\source\repos\Caffeine
+2022-12-04 01:28:04.174 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5001/ - -
+2022-12-04 01:28:04.329 +02:00 [INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Host: localhost:5001
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.62
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9,ro;q=0.8,hu;q=0.7,de;q=0.6
+Cookie: [Redacted]
+Upgrade-Insecure-Requests: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-user: [Redacted]
+sec-fetch-dest: [Redacted]
+2022-12-04 01:28:04.394 +02:00 [INF] Executing endpoint 'CAFFEINE.Controllers.HomeController.Index (CAFFEINE)'
+2022-12-04 01:28:04.431 +02:00 [INF] Route matched with {action = "Index", controller = "Home", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(System.String, System.String) on controller CAFFEINE.Controllers.HomeController (CAFFEINE).
+2022-12-04 01:28:04.507 +02:00 [INF] 04/12/2022 01:28:04 test2@test.com CAFFEINE.Controllers.HomeController.Index
+2022-12-04 01:28:04.582 +02:00 [INF] Entity Framework Core 3.1.25 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2022-12-04 01:28:04.816 +02:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[DB_ID], [c].[gifContent], [c].[Creator], [c].[Day], [c].[Hour], [c].[Minute], [c].[Month], [c].[Year], [t0].[DB_ID], [t0].[CaffDB_ID], [t0].[Caption], [t0].[Duration], [t0].[Height], [t0].[Pixels], [t0].[Width], [t0].[DB_ID0], [t0].[CiffDB_ID], [t0].[Text], [c1].[DB_ID], [c1].[CaffDB_ID], [c1].[Creator], [c1].[DT_Created], [c1].[Text]
+FROM [Caffs] AS [c]
+LEFT JOIN (
+    SELECT [c0].[DB_ID], [c0].[CaffDB_ID], [c0].[Caption], [c0].[Duration], [c0].[Height], [c0].[Pixels], [c0].[Width], [t].[DB_ID] AS [DB_ID0], [t].[CiffDB_ID], [t].[Text]
+    FROM [Ciffs] AS [c0]
+    LEFT JOIN [Tags] AS [t] ON [c0].[DB_ID] = [t].[CiffDB_ID]
+) AS [t0] ON [c].[DB_ID] = [t0].[CaffDB_ID]
+LEFT JOIN [Comments] AS [c1] ON [c].[DB_ID] = [c1].[CaffDB_ID]
+ORDER BY [c].[DB_ID], [t0].[DB_ID], [t0].[DB_ID0], [c1].[DB_ID]
+2022-12-04 01:28:04.972 +02:00 [INF] Executing ViewResult, running view Index.
+2022-12-04 01:28:05.364 +02:00 [INF] Executed ViewResult - view Index executed in 396.3578ms.
+2022-12-04 01:28:05.374 +02:00 [INF] Executed action CAFFEINE.Controllers.HomeController.Index (CAFFEINE) in 943.208ms
+2022-12-04 01:28:05.376 +02:00 [INF] Executed endpoint 'CAFFEINE.Controllers.HomeController.Index (CAFFEINE)'
+2022-12-04 01:28:05.379 +02:00 [INF] Response:
+StatusCode: 200
+Content-Type: text/html; charset=utf-8
+Cache-Control: [Redacted]
+Pragma: [Redacted]
+2022-12-04 01:28:05.628 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5001/ - - - 200 - text/html;+charset=utf-8 1459.9685ms
+2022-12-04 01:28:05.658 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5001/bootstrap/js/bootstrap.min.js - -
+2022-12-04 01:28:05.658 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_vs/browserLink - -
+2022-12-04 01:28:05.658 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_framework/aspnetcore-browser-refresh.js - -
+2022-12-04 01:28:05.663 +02:00 [INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /bootstrap/js/bootstrap.min.js
+Accept: */*
+Host: localhost:5001
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.62
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9,ro;q=0.8,hu;q=0.7,de;q=0.6
+Cookie: [Redacted]
+Referer: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+2022-12-04 01:28:05.667 +02:00 [INF] Response:
+StatusCode: 404
+2022-12-04 01:28:05.671 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 13.1027ms
+2022-12-04 01:28:05.672 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5001/bootstrap/js/bootstrap.min.js - - - 404 0 - 13.5751ms
+2022-12-04 01:28:05.776 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 118.1342ms
+2022-12-04 01:28:25.829 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5001/Home/UploadGet - -
+2022-12-04 01:28:25.838 +02:00 [INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /Home/UploadGet
+Accept: */*
+Host: localhost:5001
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.62
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9,ro;q=0.8,hu;q=0.7,de;q=0.6
+Cookie: [Redacted]
+Referer: [Redacted]
+sec-ch-ua: [Redacted]
+X-Requested-With: XMLHttpRequest
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+2022-12-04 01:28:25.854 +02:00 [INF] Executing endpoint 'CAFFEINE.Controllers.HomeController.UploadGet (CAFFEINE)'
+2022-12-04 01:28:25.859 +02:00 [INF] Route matched with {action = "UploadGet", controller = "Home", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UploadGet() on controller CAFFEINE.Controllers.HomeController (CAFFEINE).
+2022-12-04 01:28:25.871 +02:00 [INF] 04/12/2022 01:28:25 test2@test.com CAFFEINE.Controllers.HomeController.MoveNext
+2022-12-04 01:28:25.875 +02:00 [INF] Executing PartialViewResult, running view ~/Views/Home/PartialViews/Upload.cshtml.
+2022-12-04 01:28:25.885 +02:00 [INF] Executed PartialViewResult - view ~/Views/Home/PartialViews/Upload.cshtml executed in 11.2674ms.
+2022-12-04 01:28:25.885 +02:00 [INF] Executed action CAFFEINE.Controllers.HomeController.UploadGet (CAFFEINE) in 26.5703ms
+2022-12-04 01:28:25.885 +02:00 [INF] Executed endpoint 'CAFFEINE.Controllers.HomeController.UploadGet (CAFFEINE)'
+2022-12-04 01:28:25.886 +02:00 [INF] Response:
+StatusCode: 200
+Content-Type: text/html; charset=utf-8
+Date: Sat, 03 Dec 2022 23:28:25 GMT
+Server: Kestrel
+Cache-Control: [Redacted]
+Pragma: [Redacted]
+2022-12-04 01:28:25.886 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5001/Home/UploadGet - - - 200 - text/html;+charset=utf-8 57.0405ms
+2022-12-04 01:28:28.525 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5001/Home/UploadGet - -
+2022-12-04 01:28:28.527 +02:00 [INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /Home/UploadGet
+Accept: */*
+Host: localhost:5001
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.62
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9,ro;q=0.8,hu;q=0.7,de;q=0.6
+Cookie: [Redacted]
+Referer: [Redacted]
+sec-ch-ua: [Redacted]
+X-Requested-With: XMLHttpRequest
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+2022-12-04 01:28:28.528 +02:00 [INF] Executing endpoint 'CAFFEINE.Controllers.HomeController.UploadGet (CAFFEINE)'
+2022-12-04 01:28:28.528 +02:00 [INF] Route matched with {action = "UploadGet", controller = "Home", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UploadGet() on controller CAFFEINE.Controllers.HomeController (CAFFEINE).
+2022-12-04 01:28:28.530 +02:00 [INF] 04/12/2022 01:28:28 test2@test.com CAFFEINE.Controllers.HomeController.MoveNext
+2022-12-04 01:28:28.531 +02:00 [INF] Executing PartialViewResult, running view ~/Views/Home/PartialViews/Upload.cshtml.
+2022-12-04 01:28:28.531 +02:00 [INF] Executed PartialViewResult - view ~/Views/Home/PartialViews/Upload.cshtml executed in 0.5506ms.
+2022-12-04 01:28:28.531 +02:00 [INF] Executed action CAFFEINE.Controllers.HomeController.UploadGet (CAFFEINE) in 2.7314ms
+2022-12-04 01:28:28.531 +02:00 [INF] Executed endpoint 'CAFFEINE.Controllers.HomeController.UploadGet (CAFFEINE)'
+2022-12-04 01:28:28.531 +02:00 [INF] Response:
+StatusCode: 200
+Content-Type: text/html; charset=utf-8
+Date: Sat, 03 Dec 2022 23:28:28 GMT
+Server: Kestrel
+Cache-Control: [Redacted]
+Pragma: [Redacted]
+2022-12-04 01:28:28.531 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5001/Home/UploadGet - - - 200 - text/html;+charset=utf-8 6.5627ms
+2022-12-04 01:28:33.315 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5001/Home/Upload multipart/form-data;+boundary=----WebKitFormBoundaryxPEO9Ry4BExBAUPz 4002871
+2022-12-04 01:28:33.316 +02:00 [INF] Request:
+Protocol: HTTP/2
+Method: POST
+Scheme: https
+PathBase: 
+Path: /Home/Upload
+Accept: */*
+Host: localhost:5001
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.62
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9,ro;q=0.8,hu;q=0.7,de;q=0.6
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryxPEO9Ry4BExBAUPz
+Cookie: [Redacted]
+Origin: [Redacted]
+Referer: [Redacted]
+Content-Length: 4002871
+sec-ch-ua: [Redacted]
+X-Requested-With: XMLHttpRequest
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+2022-12-04 01:28:33.316 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5001/Home/Upload multipart/form-data;+boundary=----WebKitFormBoundaryYfIzlJXF1s3oaxfB 4002871
+2022-12-04 01:28:33.317 +02:00 [INF] Request:
+Protocol: HTTP/2
+Method: POST
+Scheme: https
+PathBase: 
+Path: /Home/Upload
+Accept: */*
+Host: localhost:5001
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.62
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9,ro;q=0.8,hu;q=0.7,de;q=0.6
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryYfIzlJXF1s3oaxfB
+Cookie: [Redacted]
+Origin: [Redacted]
+Referer: [Redacted]
+Content-Length: 4002871
+sec-ch-ua: [Redacted]
+X-Requested-With: XMLHttpRequest
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+2022-12-04 01:28:33.317 +02:00 [INF] Executing endpoint 'CAFFEINE.Controllers.HomeController.Upload (CAFFEINE)'
+2022-12-04 01:28:33.317 +02:00 [INF] Executing endpoint 'CAFFEINE.Controllers.HomeController.Upload (CAFFEINE)'
+2022-12-04 01:28:33.328 +02:00 [INF] Route matched with {action = "Upload", controller = "Home", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Upload() on controller CAFFEINE.Controllers.HomeController (CAFFEINE).
+2022-12-04 01:28:33.329 +02:00 [INF] Route matched with {action = "Upload", controller = "Home", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Upload() on controller CAFFEINE.Controllers.HomeController (CAFFEINE).
+2022-12-04 01:28:33.672 +02:00 [INF] 04/12/2022 01:28:33 test2@test.com CAFFEINE.Controllers.HomeController.MoveNext
+2022-12-04 01:28:33.672 +02:00 [INF] 04/12/2022 01:28:33 test2@test.com CAFFEINE.Controllers.HomeController.MoveNext
+2022-12-04 01:28:34.300 +02:00 [INF] Executed action CAFFEINE.Controllers.HomeController.Upload (CAFFEINE) in 972.2146ms
+2022-12-04 01:28:34.300 +02:00 [INF] Executed action CAFFEINE.Controllers.HomeController.Upload (CAFFEINE) in 971.651ms
+2022-12-04 01:28:34.301 +02:00 [INF] Executed endpoint 'CAFFEINE.Controllers.HomeController.Upload (CAFFEINE)'
+2022-12-04 01:28:34.301 +02:00 [INF] Executed endpoint 'CAFFEINE.Controllers.HomeController.Upload (CAFFEINE)'
+2022-12-04 01:28:34.306 +02:00 [ERR] An unhandled exception has occurred while executing the request.
+System.IO.IOException: The process cannot access the file 'C:\Users\tamas\source\repos\Caffeine\test2@test.com\2.bmp' because it is being used by another process.
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize)
+   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize)
+   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize)
+   at System.IO.Strategies.FileStreamHelpers.ChooseStrategy(FileStream fileStream, String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, Int64 preallocationSize)
+   at System.IO.File.ReadAllBytes(String path)
+   at CAFFEINE.Controllers.HomeController.Upload() in C:\Users\tamas\source\repos\Caffeine\Controllers\HomeController.cs:line 284
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.HttpLogging.HttpLoggingMiddleware.InvokeInternal(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.MigrationsEndPointMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.DatabaseErrorPageMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.DatabaseErrorPageMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2022-12-04 01:28:34.306 +02:00 [ERR] An unhandled exception has occurred while executing the request.
+System.IO.IOException: The process cannot access the file 'C:\Users\tamas\source\repos\Caffeine\.gif' because it is being used by another process.
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize)
+   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize)
+   at AnimatedGif.AnimatedGifCreator..ctor(String filePath, Int32 delay, Int32 repeat)
+   at AnimatedGif.AnimatedGif.Create(String filePath, Int32 delay, Int32 repeat)
+   at CAFFEINE.Controllers.HomeController.Upload() in C:\Users\tamas\source\repos\Caffeine\Controllers\HomeController.cs:line 279
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.HttpLogging.HttpLoggingMiddleware.InvokeInternal(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.MigrationsEndPointMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.DatabaseErrorPageMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.DatabaseErrorPageMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2022-12-04 01:28:34.367 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5001/Home/Upload multipart/form-data;+boundary=----WebKitFormBoundaryxPEO9Ry4BExBAUPz 4002871 - 500 - text/plain;+charset=utf-8 1051.9603ms
+2022-12-04 01:28:34.368 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5001/Home/Upload multipart/form-data;+boundary=----WebKitFormBoundaryYfIzlJXF1s3oaxfB 4002871 - 500 - text/plain;+charset=utf-8 1051.6938ms
+2022-12-04 01:28:38.673 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5001/Home/UploadGet - -
+2022-12-04 01:28:38.674 +02:00 [INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /Home/UploadGet
+Accept: */*
+Host: localhost:5001
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.62
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9,ro;q=0.8,hu;q=0.7,de;q=0.6
+Cookie: [Redacted]
+Referer: [Redacted]
+sec-ch-ua: [Redacted]
+X-Requested-With: XMLHttpRequest
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+2022-12-04 01:28:38.675 +02:00 [INF] Executing endpoint 'CAFFEINE.Controllers.HomeController.UploadGet (CAFFEINE)'
+2022-12-04 01:28:38.675 +02:00 [INF] Route matched with {action = "UploadGet", controller = "Home", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UploadGet() on controller CAFFEINE.Controllers.HomeController (CAFFEINE).
+2022-12-04 01:28:38.675 +02:00 [INF] 04/12/2022 01:28:38 test2@test.com CAFFEINE.Controllers.HomeController.MoveNext
+2022-12-04 01:28:38.675 +02:00 [INF] Executing PartialViewResult, running view ~/Views/Home/PartialViews/Upload.cshtml.
+2022-12-04 01:28:38.675 +02:00 [INF] Executed PartialViewResult - view ~/Views/Home/PartialViews/Upload.cshtml executed in 0.4205ms.
+2022-12-04 01:28:38.676 +02:00 [INF] Executed action CAFFEINE.Controllers.HomeController.UploadGet (CAFFEINE) in 0.8234ms
+2022-12-04 01:28:38.676 +02:00 [INF] Executed endpoint 'CAFFEINE.Controllers.HomeController.UploadGet (CAFFEINE)'
+2022-12-04 01:28:38.676 +02:00 [INF] Response:
+StatusCode: 200
+Content-Type: text/html; charset=utf-8
+Date: Sat, 03 Dec 2022 23:28:38 GMT
+Server: Kestrel
+Cache-Control: [Redacted]
+Pragma: [Redacted]
+2022-12-04 01:28:38.676 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5001/Home/UploadGet - - - 200 - text/html;+charset=utf-8 2.5686ms
+2022-12-04 01:29:04.163 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5001/Home/Upload multipart/form-data;+boundary=----WebKitFormBoundaryUfxbB6SRK1uuWT0q 4002871
+2022-12-04 01:29:04.165 +02:00 [INF] Request:
+Protocol: HTTP/2
+Method: POST
+Scheme: https
+PathBase: 
+Path: /Home/Upload
+Accept: */*
+Host: localhost:5001
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.62
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9,ro;q=0.8,hu;q=0.7,de;q=0.6
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryUfxbB6SRK1uuWT0q
+Cookie: [Redacted]
+Origin: [Redacted]
+Referer: [Redacted]
+Content-Length: 4002871
+sec-ch-ua: [Redacted]
+X-Requested-With: XMLHttpRequest
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+2022-12-04 01:29:04.174 +02:00 [INF] Executing endpoint 'CAFFEINE.Controllers.HomeController.Upload (CAFFEINE)'
+2022-12-04 01:29:04.176 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5001/Home/Upload multipart/form-data;+boundary=----WebKitFormBoundarylYdb9A5JQi9tOfoQ 4002871
+2022-12-04 01:29:04.177 +02:00 [INF] Route matched with {action = "Upload", controller = "Home", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Upload() on controller CAFFEINE.Controllers.HomeController (CAFFEINE).
+2022-12-04 01:29:04.177 +02:00 [INF] Request:
+Protocol: HTTP/2
+Method: POST
+Scheme: https
+PathBase: 
+Path: /Home/Upload
+Accept: */*
+Host: localhost:5001
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.62
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9,ro;q=0.8,hu;q=0.7,de;q=0.6
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundarylYdb9A5JQi9tOfoQ
+Cookie: [Redacted]
+Origin: [Redacted]
+Referer: [Redacted]
+Content-Length: 4002871
+sec-ch-ua: [Redacted]
+X-Requested-With: XMLHttpRequest
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+2022-12-04 01:29:04.177 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5001/Home/Upload multipart/form-data;+boundary=----WebKitFormBoundaryOHLhKLj22AhazvTl 4002871
+2022-12-04 01:29:04.178 +02:00 [INF] Request:
+Protocol: HTTP/2
+Method: POST
+Scheme: https
+PathBase: 
+Path: /Home/Upload
+Accept: */*
+Host: localhost:5001
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.62
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9,ro;q=0.8,hu;q=0.7,de;q=0.6
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryOHLhKLj22AhazvTl
+Cookie: [Redacted]
+Origin: [Redacted]
+Referer: [Redacted]
+Content-Length: 4002871
+sec-ch-ua: [Redacted]
+X-Requested-With: XMLHttpRequest
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+2022-12-04 01:29:04.178 +02:00 [INF] Executing endpoint 'CAFFEINE.Controllers.HomeController.Upload (CAFFEINE)'
+2022-12-04 01:29:04.178 +02:00 [INF] Executing endpoint 'CAFFEINE.Controllers.HomeController.Upload (CAFFEINE)'
+2022-12-04 01:29:04.178 +02:00 [INF] Route matched with {action = "Upload", controller = "Home", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Upload() on controller CAFFEINE.Controllers.HomeController (CAFFEINE).
+2022-12-04 01:29:04.178 +02:00 [INF] Route matched with {action = "Upload", controller = "Home", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Upload() on controller CAFFEINE.Controllers.HomeController (CAFFEINE).
+2022-12-04 01:29:11.388 +02:00 [INF] 04/12/2022 01:29:07 test2@test.com CAFFEINE.Controllers.HomeController.MoveNext
+2022-12-04 01:29:12.328 +02:00 [INF] 04/12/2022 01:29:09 test2@test.com CAFFEINE.Controllers.HomeController.MoveNext
+2022-12-04 01:29:14.406 +02:00 [INF] 04/12/2022 01:29:10 test2@test.com CAFFEINE.Controllers.HomeController.MoveNext
+2022-12-04 01:29:29.548 +02:00 [INF] Executed action CAFFEINE.Controllers.HomeController.Upload (CAFFEINE) in 25371.0522ms
+2022-12-04 01:29:29.549 +02:00 [INF] Executed endpoint 'CAFFEINE.Controllers.HomeController.Upload (CAFFEINE)'
+2022-12-04 01:29:29.551 +02:00 [ERR] An unhandled exception has occurred while executing the request.
+System.IO.IOException: The process cannot access the file 'C:\Users\tamas\source\repos\Caffeine\.gif' because it is being used by another process.
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize)
+   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize)
+   at AnimatedGif.AnimatedGifCreator..ctor(String filePath, Int32 delay, Int32 repeat)
+   at AnimatedGif.AnimatedGif.Create(String filePath, Int32 delay, Int32 repeat)
+   at CAFFEINE.Controllers.HomeController.Upload() in C:\Users\tamas\source\repos\Caffeine\Controllers\HomeController.cs:line 279
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.HttpLogging.HttpLoggingMiddleware.InvokeInternal(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.MigrationsEndPointMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.DatabaseErrorPageMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.DatabaseErrorPageMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2022-12-04 01:29:29.557 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5001/Home/Upload multipart/form-data;+boundary=----WebKitFormBoundaryUfxbB6SRK1uuWT0q 4002871 - 500 - text/plain;+charset=utf-8 25393.8490ms
+2022-12-04 01:29:29.721 +02:00 [INF] Entity Framework Core 3.1.25 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2022-12-04 01:29:30.213 +02:00 [INF] Entity Framework Core 3.1.25 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2022-12-04 01:29:30.223 +02:00 [INF] Executed DbCommand (138ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (DbType = Int32), @p2='?' (DbType = Int32), @p3='?' (DbType = Int32), @p4='?' (DbType = Int32), @p5='?' (DbType = Int32), @p6='?' (Size = -1) (DbType = Binary), @p7='?' (Size = -1) (DbType = Binary)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Caffs] ([Creator], [Day], [Hour], [Minute], [Month], [Year], [gifContent], [originalContent])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+SELECT [DB_ID]
+FROM [Caffs]
+WHERE @@ROWCOUNT = 1 AND [DB_ID] = scope_identity();
+2022-12-04 01:29:30.265 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p2='?' (DbType = Int32), @p3='?' (DbType = Int32), @p4='?' (Size = 8000) (DbType = Binary), @p5='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Ciffs] ([CaffDB_ID], [Caption], [Duration], [Height], [Pixels], [Width])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+SELECT [DB_ID]
+FROM [Ciffs]
+WHERE @@ROWCOUNT = 1 AND [DB_ID] = scope_identity();
+2022-12-04 01:29:30.267 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p2='?' (DbType = Int32), @p3='?' (DbType = Int32), @p4='?' (Size = 8000) (DbType = Binary), @p5='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Ciffs] ([CaffDB_ID], [Caption], [Duration], [Height], [Pixels], [Width])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+SELECT [DB_ID]
+FROM [Ciffs]
+WHERE @@ROWCOUNT = 1 AND [DB_ID] = scope_identity();
+2022-12-04 01:29:30.301 +02:00 [INF] Executed DbCommand (17ms) [Parameters=[@p6='?' (DbType = Int32), @p7='?' (Size = 4000), @p8='?' (DbType = Int32), @p9='?' (Size = 4000), @p10='?' (DbType = Int32), @p11='?' (Size = 4000), @p12='?' (DbType = Int32), @p13='?' (Size = 4000), @p14='?' (DbType = Int32), @p15='?' (Size = 4000), @p16='?' (DbType = Int32), @p17='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+DECLARE @inserted0 TABLE ([DB_ID] int, [_Position] [int]);
+MERGE [Tags] USING (
+VALUES (@p6, @p7, 0),
+(@p8, @p9, 1),
+(@p10, @p11, 2),
+(@p12, @p13, 3),
+(@p14, @p15, 4),
+(@p16, @p17, 5)) AS i ([CiffDB_ID], [Text], _Position) ON 1=0
+WHEN NOT MATCHED THEN
+INSERT ([CiffDB_ID], [Text])
+VALUES (i.[CiffDB_ID], i.[Text])
+OUTPUT INSERTED.[DB_ID], i._Position
+INTO @inserted0;
+
+SELECT [t].[DB_ID] FROM [Tags] t
+INNER JOIN @inserted0 i ON ([t].[DB_ID] = [i].[DB_ID])
+ORDER BY [i].[_Position];
+2022-12-04 01:29:30.346 +02:00 [INF] Executing JsonResult, writing value of type '<>f__AnonymousType0`1[[System.Boolean, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2022-12-04 01:29:30.351 +02:00 [INF] Executed action CAFFEINE.Controllers.HomeController.Upload (CAFFEINE) in 26173.3947ms
+2022-12-04 01:29:30.352 +02:00 [INF] Executed endpoint 'CAFFEINE.Controllers.HomeController.Upload (CAFFEINE)'
+2022-12-04 01:29:30.352 +02:00 [INF] Response:
+StatusCode: 200
+Content-Type: application/json; charset=utf-8
+Date: Sat, 03 Dec 2022 23:29:29 GMT
+Server: Kestrel
+2022-12-04 01:29:30.353 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5001/Home/Upload multipart/form-data;+boundary=----WebKitFormBoundarylYdb9A5JQi9tOfoQ 4002871 - 200 - application/json;+charset=utf-8 26180.7202ms
+2022-12-04 01:29:31.338 +02:00 [INF] Executed DbCommand (1,083ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (DbType = Int32), @p2='?' (DbType = Int32), @p3='?' (DbType = Int32), @p4='?' (DbType = Int32), @p5='?' (DbType = Int32), @p6='?' (Size = -1) (DbType = Binary), @p7='?' (Size = -1) (DbType = Binary)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Caffs] ([Creator], [Day], [Hour], [Minute], [Month], [Year], [gifContent], [originalContent])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+SELECT [DB_ID]
+FROM [Caffs]
+WHERE @@ROWCOUNT = 1 AND [DB_ID] = scope_identity();
+2022-12-04 01:29:31.365 +02:00 [INF] Executed DbCommand (26ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p2='?' (DbType = Int32), @p3='?' (DbType = Int32), @p4='?' (Size = 8000) (DbType = Binary), @p5='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Ciffs] ([CaffDB_ID], [Caption], [Duration], [Height], [Pixels], [Width])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+SELECT [DB_ID]
+FROM [Ciffs]
+WHERE @@ROWCOUNT = 1 AND [DB_ID] = scope_identity();
+2022-12-04 01:29:31.393 +02:00 [INF] Executed DbCommand (28ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p2='?' (DbType = Int32), @p3='?' (DbType = Int32), @p4='?' (Size = 8000) (DbType = Binary), @p5='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Ciffs] ([CaffDB_ID], [Caption], [Duration], [Height], [Pixels], [Width])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+SELECT [DB_ID]
+FROM [Ciffs]
+WHERE @@ROWCOUNT = 1 AND [DB_ID] = scope_identity();
+2022-12-04 01:29:31.493 +02:00 [INF] Executed DbCommand (100ms) [Parameters=[@p6='?' (DbType = Int32), @p7='?' (Size = 4000), @p8='?' (DbType = Int32), @p9='?' (Size = 4000), @p10='?' (DbType = Int32), @p11='?' (Size = 4000), @p12='?' (DbType = Int32), @p13='?' (Size = 4000), @p14='?' (DbType = Int32), @p15='?' (Size = 4000), @p16='?' (DbType = Int32), @p17='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+DECLARE @inserted0 TABLE ([DB_ID] int, [_Position] [int]);
+MERGE [Tags] USING (
+VALUES (@p6, @p7, 0),
+(@p8, @p9, 1),
+(@p10, @p11, 2),
+(@p12, @p13, 3),
+(@p14, @p15, 4),
+(@p16, @p17, 5)) AS i ([CiffDB_ID], [Text], _Position) ON 1=0
+WHEN NOT MATCHED THEN
+INSERT ([CiffDB_ID], [Text])
+VALUES (i.[CiffDB_ID], i.[Text])
+OUTPUT INSERTED.[DB_ID], i._Position
+INTO @inserted0;
+
+SELECT [t].[DB_ID] FROM [Tags] t
+INNER JOIN @inserted0 i ON ([t].[DB_ID] = [i].[DB_ID])
+ORDER BY [i].[_Position];
+2022-12-04 01:29:31.581 +02:00 [INF] Executing JsonResult, writing value of type '<>f__AnonymousType0`1[[System.Boolean, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2022-12-04 01:29:31.582 +02:00 [INF] Executed action CAFFEINE.Controllers.HomeController.Upload (CAFFEINE) in 27403.6846ms
+2022-12-04 01:29:31.582 +02:00 [INF] Executed endpoint 'CAFFEINE.Controllers.HomeController.Upload (CAFFEINE)'
+2022-12-04 01:29:31.582 +02:00 [INF] Response:
+StatusCode: 200
+Content-Type: application/json; charset=utf-8
+Date: Sat, 03 Dec 2022 23:29:31 GMT
+Server: Kestrel
+2022-12-04 01:29:31.583 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5001/Home/Upload multipart/form-data;+boundary=----WebKitFormBoundaryOHLhKLj22AhazvTl 4002871 - 200 - application/json;+charset=utf-8 27405.8405ms
+2022-12-04 01:29:32.808 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5001/ - -
+2022-12-04 01:29:32.809 +02:00 [INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Host: localhost:5001
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.62
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9,ro;q=0.8,hu;q=0.7,de;q=0.6
+Cache-Control: max-age=0
+Cookie: [Redacted]
+Referer: [Redacted]
+Upgrade-Insecure-Requests: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+2022-12-04 01:29:32.810 +02:00 [INF] Executing endpoint 'CAFFEINE.Controllers.HomeController.Index (CAFFEINE)'
+2022-12-04 01:29:32.810 +02:00 [INF] Route matched with {action = "Index", controller = "Home", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(System.String, System.String) on controller CAFFEINE.Controllers.HomeController (CAFFEINE).
+2022-12-04 01:29:32.810 +02:00 [INF] 04/12/2022 01:29:32 test2@test.com CAFFEINE.Controllers.HomeController.Index
+2022-12-04 01:29:32.810 +02:00 [INF] Entity Framework Core 3.1.25 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2022-12-04 01:29:32.817 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5001/ - -
+2022-12-04 01:29:32.818 +02:00 [INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Host: localhost:5001
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.62
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9,ro;q=0.8,hu;q=0.7,de;q=0.6
+Cache-Control: max-age=0
+Cookie: [Redacted]
+Referer: [Redacted]
+Upgrade-Insecure-Requests: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+2022-12-04 01:29:32.818 +02:00 [INF] Executing endpoint 'CAFFEINE.Controllers.HomeController.Index (CAFFEINE)'
+2022-12-04 01:29:32.819 +02:00 [INF] Route matched with {action = "Index", controller = "Home", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(System.String, System.String) on controller CAFFEINE.Controllers.HomeController (CAFFEINE).
+2022-12-04 01:29:32.819 +02:00 [INF] 04/12/2022 01:29:32 test2@test.com CAFFEINE.Controllers.HomeController.Index
+2022-12-04 01:29:32.820 +02:00 [INF] Entity Framework Core 3.1.25 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2022-12-04 01:29:32.834 +02:00 [INF] Executed DbCommand (20ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[DB_ID], [c].[gifContent], [c].[Creator], [c].[Day], [c].[Hour], [c].[Minute], [c].[Month], [c].[Year], [t0].[DB_ID], [t0].[CaffDB_ID], [t0].[Caption], [t0].[Duration], [t0].[Height], [t0].[Pixels], [t0].[Width], [t0].[DB_ID0], [t0].[CiffDB_ID], [t0].[Text], [c1].[DB_ID], [c1].[CaffDB_ID], [c1].[Creator], [c1].[DT_Created], [c1].[Text]
+FROM [Caffs] AS [c]
+LEFT JOIN (
+    SELECT [c0].[DB_ID], [c0].[CaffDB_ID], [c0].[Caption], [c0].[Duration], [c0].[Height], [c0].[Pixels], [c0].[Width], [t].[DB_ID] AS [DB_ID0], [t].[CiffDB_ID], [t].[Text]
+    FROM [Ciffs] AS [c0]
+    LEFT JOIN [Tags] AS [t] ON [c0].[DB_ID] = [t].[CiffDB_ID]
+) AS [t0] ON [c].[DB_ID] = [t0].[CaffDB_ID]
+LEFT JOIN [Comments] AS [c1] ON [c].[DB_ID] = [c1].[CaffDB_ID]
+ORDER BY [c].[DB_ID], [t0].[DB_ID], [t0].[DB_ID0], [c1].[DB_ID]
+2022-12-04 01:29:32.843 +02:00 [INF] Executed DbCommand (22ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[DB_ID], [c].[gifContent], [c].[Creator], [c].[Day], [c].[Hour], [c].[Minute], [c].[Month], [c].[Year], [t0].[DB_ID], [t0].[CaffDB_ID], [t0].[Caption], [t0].[Duration], [t0].[Height], [t0].[Pixels], [t0].[Width], [t0].[DB_ID0], [t0].[CiffDB_ID], [t0].[Text], [c1].[DB_ID], [c1].[CaffDB_ID], [c1].[Creator], [c1].[DT_Created], [c1].[Text]
+FROM [Caffs] AS [c]
+LEFT JOIN (
+    SELECT [c0].[DB_ID], [c0].[CaffDB_ID], [c0].[Caption], [c0].[Duration], [c0].[Height], [c0].[Pixels], [c0].[Width], [t].[DB_ID] AS [DB_ID0], [t].[CiffDB_ID], [t].[Text]
+    FROM [Ciffs] AS [c0]
+    LEFT JOIN [Tags] AS [t] ON [c0].[DB_ID] = [t].[CiffDB_ID]
+) AS [t0] ON [c].[DB_ID] = [t0].[CaffDB_ID]
+LEFT JOIN [Comments] AS [c1] ON [c].[DB_ID] = [c1].[CaffDB_ID]
+ORDER BY [c].[DB_ID], [t0].[DB_ID], [t0].[DB_ID0], [c1].[DB_ID]
+2022-12-04 01:29:32.920 +02:00 [INF] Executing ViewResult, running view Index.
+2022-12-04 01:29:32.921 +02:00 [INF] Executing ViewResult, running view Index.
+2022-12-04 01:29:32.982 +02:00 [INF] Executed ViewResult - view Index executed in 60.4388ms.
+2022-12-04 01:29:32.982 +02:00 [INF] Executed action CAFFEINE.Controllers.HomeController.Index (CAFFEINE) in 163.3288ms
+2022-12-04 01:29:32.982 +02:00 [INF] Executed endpoint 'CAFFEINE.Controllers.HomeController.Index (CAFFEINE)'
+2022-12-04 01:29:32.982 +02:00 [INF] Executed ViewResult - view Index executed in 62.0824ms.
+2022-12-04 01:29:32.982 +02:00 [INF] Response:
+StatusCode: 200
+Content-Type: text/html; charset=utf-8
+Cache-Control: [Redacted]
+Pragma: [Redacted]
+2022-12-04 01:29:32.982 +02:00 [INF] Executed action CAFFEINE.Controllers.HomeController.Index (CAFFEINE) in 172.3398ms
+2022-12-04 01:29:32.982 +02:00 [INF] Executed endpoint 'CAFFEINE.Controllers.HomeController.Index (CAFFEINE)'
+2022-12-04 01:29:32.983 +02:00 [INF] Response:
+StatusCode: 200
+Content-Type: text/html; charset=utf-8
+Cache-Control: [Redacted]
+Pragma: [Redacted]
+2022-12-04 01:29:33.443 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5001/ - - - 200 - text/html;+charset=utf-8 634.7482ms
+2022-12-04 01:29:33.453 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5001/ - - - 200 - text/html;+charset=utf-8 636.6295ms
+2022-12-04 01:29:33.487 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5001/bootstrap/js/bootstrap.min.js - -
+2022-12-04 01:29:33.488 +02:00 [INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /bootstrap/js/bootstrap.min.js
+Accept: */*
+Host: localhost:5001
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.62
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9,ro;q=0.8,hu;q=0.7,de;q=0.6
+Cookie: [Redacted]
+Referer: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+2022-12-04 01:29:33.489 +02:00 [INF] Response:
+StatusCode: 404
+2022-12-04 01:29:33.489 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5001/bootstrap/js/bootstrap.min.js - - - 404 0 - 2.2422ms
+2022-12-04 01:29:33.516 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_vs/browserLink - -
+2022-12-04 01:29:33.516 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_framework/aspnetcore-browser-refresh.js - -
+2022-12-04 01:29:33.517 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 0.6763ms
+2022-12-04 01:29:33.530 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 13.5205ms
+2022-12-04 01:29:33.703 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5001/Home/UploadGet - -
+2022-12-04 01:29:33.703 +02:00 [INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /Home/UploadGet
+Accept: */*
+Host: localhost:5001
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.62
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9,ro;q=0.8,hu;q=0.7,de;q=0.6
+Cookie: [Redacted]
+Referer: [Redacted]
+sec-ch-ua: [Redacted]
+X-Requested-With: XMLHttpRequest
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+2022-12-04 01:29:33.703 +02:00 [INF] Executing endpoint 'CAFFEINE.Controllers.HomeController.UploadGet (CAFFEINE)'
+2022-12-04 01:29:33.704 +02:00 [INF] Route matched with {action = "UploadGet", controller = "Home", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UploadGet() on controller CAFFEINE.Controllers.HomeController (CAFFEINE).
+2022-12-04 01:29:33.704 +02:00 [INF] 04/12/2022 01:29:33 test2@test.com CAFFEINE.Controllers.HomeController.MoveNext
+2022-12-04 01:29:33.704 +02:00 [INF] Executing PartialViewResult, running view ~/Views/Home/PartialViews/Upload.cshtml.
+2022-12-04 01:29:33.705 +02:00 [INF] Executed PartialViewResult - view ~/Views/Home/PartialViews/Upload.cshtml executed in 1.4218ms.
+2022-12-04 01:29:33.705 +02:00 [INF] Executed action CAFFEINE.Controllers.HomeController.UploadGet (CAFFEINE) in 1.8333ms
+2022-12-04 01:29:33.705 +02:00 [INF] Executed endpoint 'CAFFEINE.Controllers.HomeController.UploadGet (CAFFEINE)'
+2022-12-04 01:29:33.706 +02:00 [INF] Response:
+StatusCode: 200
+Content-Type: text/html; charset=utf-8
+Date: Sat, 03 Dec 2022 23:29:33 GMT
+Server: Kestrel
+Cache-Control: [Redacted]
+Pragma: [Redacted]
+2022-12-04 01:29:33.706 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5001/Home/UploadGet - - - 200 - text/html;+charset=utf-8 3.4679ms
+2022-12-04 01:29:39.133 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5001/Home/Upload multipart/form-data;+boundary=----WebKitFormBoundaryu0bEhLCzRNKhH9Ct 4002883
+2022-12-04 01:29:39.133 +02:00 [INF] Request:
+Protocol: HTTP/2
+Method: POST
+Scheme: https
+PathBase: 
+Path: /Home/Upload
+Accept: */*
+Host: localhost:5001
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.62
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9,ro;q=0.8,hu;q=0.7,de;q=0.6
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryu0bEhLCzRNKhH9Ct
+Cookie: [Redacted]
+Origin: [Redacted]
+Referer: [Redacted]
+Content-Length: 4002883
+sec-ch-ua: [Redacted]
+X-Requested-With: XMLHttpRequest
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+2022-12-04 01:29:39.133 +02:00 [INF] Executing endpoint 'CAFFEINE.Controllers.HomeController.Upload (CAFFEINE)'
+2022-12-04 01:29:39.133 +02:00 [INF] Route matched with {action = "Upload", controller = "Home", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Upload() on controller CAFFEINE.Controllers.HomeController (CAFFEINE).
+2022-12-04 01:29:42.247 +02:00 [INF] 04/12/2022 01:29:42 test2@test.com CAFFEINE.Controllers.HomeController.MoveNext
+2022-12-04 01:29:42.741 +02:00 [INF] Entity Framework Core 3.1.25 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2022-12-04 01:29:42.861 +02:00 [INF] Executed DbCommand (117ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (DbType = Int32), @p2='?' (DbType = Int32), @p3='?' (DbType = Int32), @p4='?' (DbType = Int32), @p5='?' (DbType = Int32), @p6='?' (Size = -1) (DbType = Binary), @p7='?' (Size = -1) (DbType = Binary)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Caffs] ([Creator], [Day], [Hour], [Minute], [Month], [Year], [gifContent], [originalContent])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+SELECT [DB_ID]
+FROM [Caffs]
+WHERE @@ROWCOUNT = 1 AND [DB_ID] = scope_identity();
+2022-12-04 01:29:42.864 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p2='?' (DbType = Int32), @p3='?' (DbType = Int32), @p4='?' (Size = 8000) (DbType = Binary), @p5='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Ciffs] ([CaffDB_ID], [Caption], [Duration], [Height], [Pixels], [Width])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+SELECT [DB_ID]
+FROM [Ciffs]
+WHERE @@ROWCOUNT = 1 AND [DB_ID] = scope_identity();
+2022-12-04 01:29:42.865 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p2='?' (DbType = Int32), @p3='?' (DbType = Int32), @p4='?' (Size = 8000) (DbType = Binary), @p5='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Ciffs] ([CaffDB_ID], [Caption], [Duration], [Height], [Pixels], [Width])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+SELECT [DB_ID]
+FROM [Ciffs]
+WHERE @@ROWCOUNT = 1 AND [DB_ID] = scope_identity();
+2022-12-04 01:29:42.885 +02:00 [INF] Executed DbCommand (19ms) [Parameters=[@p6='?' (DbType = Int32), @p7='?' (Size = 4000), @p8='?' (DbType = Int32), @p9='?' (Size = 4000), @p10='?' (DbType = Int32), @p11='?' (Size = 4000), @p12='?' (DbType = Int32), @p13='?' (Size = 4000), @p14='?' (DbType = Int32), @p15='?' (Size = 4000), @p16='?' (DbType = Int32), @p17='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+DECLARE @inserted0 TABLE ([DB_ID] int, [_Position] [int]);
+MERGE [Tags] USING (
+VALUES (@p6, @p7, 0),
+(@p8, @p9, 1),
+(@p10, @p11, 2),
+(@p12, @p13, 3),
+(@p14, @p15, 4),
+(@p16, @p17, 5)) AS i ([CiffDB_ID], [Text], _Position) ON 1=0
+WHEN NOT MATCHED THEN
+INSERT ([CiffDB_ID], [Text])
+VALUES (i.[CiffDB_ID], i.[Text])
+OUTPUT INSERTED.[DB_ID], i._Position
+INTO @inserted0;
+
+SELECT [t].[DB_ID] FROM [Tags] t
+INNER JOIN @inserted0 i ON ([t].[DB_ID] = [i].[DB_ID])
+ORDER BY [i].[_Position];
+2022-12-04 01:29:42.886 +02:00 [INF] Executing JsonResult, writing value of type '<>f__AnonymousType0`1[[System.Boolean, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2022-12-04 01:29:42.887 +02:00 [INF] Executed action CAFFEINE.Controllers.HomeController.Upload (CAFFEINE) in 3753.0722ms
+2022-12-04 01:29:42.887 +02:00 [INF] Executed endpoint 'CAFFEINE.Controllers.HomeController.Upload (CAFFEINE)'
+2022-12-04 01:29:42.887 +02:00 [INF] Response:
+StatusCode: 200
+Content-Type: application/json; charset=utf-8
+Date: Sat, 03 Dec 2022 23:29:42 GMT
+Server: Kestrel
+2022-12-04 01:29:42.888 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5001/Home/Upload multipart/form-data;+boundary=----WebKitFormBoundaryu0bEhLCzRNKhH9Ct 4002883 - 200 - application/json;+charset=utf-8 3755.2775ms
+2022-12-04 01:29:42.906 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5001/ - -
+2022-12-04 01:29:42.907 +02:00 [INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Host: localhost:5001
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.62
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9,ro;q=0.8,hu;q=0.7,de;q=0.6
+Cache-Control: max-age=0
+Cookie: [Redacted]
+Referer: [Redacted]
+Upgrade-Insecure-Requests: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-user: [Redacted]
+sec-fetch-dest: [Redacted]
+2022-12-04 01:29:42.908 +02:00 [INF] Executing endpoint 'CAFFEINE.Controllers.HomeController.Index (CAFFEINE)'
+2022-12-04 01:29:42.908 +02:00 [INF] Route matched with {action = "Index", controller = "Home", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(System.String, System.String) on controller CAFFEINE.Controllers.HomeController (CAFFEINE).
+2022-12-04 01:29:42.908 +02:00 [INF] 04/12/2022 01:29:42 test2@test.com CAFFEINE.Controllers.HomeController.Index
+2022-12-04 01:29:42.909 +02:00 [INF] Entity Framework Core 3.1.25 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2022-12-04 01:29:42.920 +02:00 [INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[DB_ID], [c].[gifContent], [c].[Creator], [c].[Day], [c].[Hour], [c].[Minute], [c].[Month], [c].[Year], [t0].[DB_ID], [t0].[CaffDB_ID], [t0].[Caption], [t0].[Duration], [t0].[Height], [t0].[Pixels], [t0].[Width], [t0].[DB_ID0], [t0].[CiffDB_ID], [t0].[Text], [c1].[DB_ID], [c1].[CaffDB_ID], [c1].[Creator], [c1].[DT_Created], [c1].[Text]
+FROM [Caffs] AS [c]
+LEFT JOIN (
+    SELECT [c0].[DB_ID], [c0].[CaffDB_ID], [c0].[Caption], [c0].[Duration], [c0].[Height], [c0].[Pixels], [c0].[Width], [t].[DB_ID] AS [DB_ID0], [t].[CiffDB_ID], [t].[Text]
+    FROM [Ciffs] AS [c0]
+    LEFT JOIN [Tags] AS [t] ON [c0].[DB_ID] = [t].[CiffDB_ID]
+) AS [t0] ON [c].[DB_ID] = [t0].[CaffDB_ID]
+LEFT JOIN [Comments] AS [c1] ON [c].[DB_ID] = [c1].[CaffDB_ID]
+ORDER BY [c].[DB_ID], [t0].[DB_ID], [t0].[DB_ID0], [c1].[DB_ID]
+2022-12-04 01:29:43.012 +02:00 [INF] Executing ViewResult, running view Index.
+2022-12-04 01:29:43.050 +02:00 [INF] Executed ViewResult - view Index executed in 37.7854ms.
+2022-12-04 01:29:43.050 +02:00 [INF] Executed action CAFFEINE.Controllers.HomeController.Index (CAFFEINE) in 142.1591ms
+2022-12-04 01:29:43.050 +02:00 [INF] Executed endpoint 'CAFFEINE.Controllers.HomeController.Index (CAFFEINE)'
+2022-12-04 01:29:43.050 +02:00 [INF] Response:
+StatusCode: 200
+Content-Type: text/html; charset=utf-8
+Cache-Control: [Redacted]
+Pragma: [Redacted]
+2022-12-04 01:29:43.676 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5001/ - - - 200 - text/html;+charset=utf-8 770.2688ms
+2022-12-04 01:29:43.706 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5001/bootstrap/js/bootstrap.min.js - -
+2022-12-04 01:29:43.706 +02:00 [INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /bootstrap/js/bootstrap.min.js
+Accept: */*
+Host: localhost:5001
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.62
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9,ro;q=0.8,hu;q=0.7,de;q=0.6
+Cookie: [Redacted]
+Referer: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+2022-12-04 01:29:43.707 +02:00 [INF] Response:
+StatusCode: 404
+2022-12-04 01:29:43.707 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5001/bootstrap/js/bootstrap.min.js - - - 404 0 - 1.2518ms
+2022-12-04 01:29:43.734 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_framework/aspnetcore-browser-refresh.js - -
+2022-12-04 01:29:43.734 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_vs/browserLink - -
+2022-12-04 01:29:43.735 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 0.6576ms
+2022-12-04 01:29:43.743 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 9.3370ms
+2022-12-04 01:29:46.766 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5001/Home/UploadGet - -
+2022-12-04 01:29:46.766 +02:00 [INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /Home/UploadGet
+Accept: */*
+Host: localhost:5001
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.62
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9,ro;q=0.8,hu;q=0.7,de;q=0.6
+Cookie: [Redacted]
+Referer: [Redacted]
+sec-ch-ua: [Redacted]
+X-Requested-With: XMLHttpRequest
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+2022-12-04 01:29:46.767 +02:00 [INF] Executing endpoint 'CAFFEINE.Controllers.HomeController.UploadGet (CAFFEINE)'
+2022-12-04 01:29:46.767 +02:00 [INF] Route matched with {action = "UploadGet", controller = "Home", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UploadGet() on controller CAFFEINE.Controllers.HomeController (CAFFEINE).
+2022-12-04 01:29:46.767 +02:00 [INF] 04/12/2022 01:29:46 test2@test.com CAFFEINE.Controllers.HomeController.MoveNext
+2022-12-04 01:29:46.767 +02:00 [INF] Executing PartialViewResult, running view ~/Views/Home/PartialViews/Upload.cshtml.
+2022-12-04 01:29:46.767 +02:00 [INF] Executed PartialViewResult - view ~/Views/Home/PartialViews/Upload.cshtml executed in 0.3272ms.
+2022-12-04 01:29:46.767 +02:00 [INF] Executed action CAFFEINE.Controllers.HomeController.UploadGet (CAFFEINE) in 0.4916ms
+2022-12-04 01:29:46.767 +02:00 [INF] Executed endpoint 'CAFFEINE.Controllers.HomeController.UploadGet (CAFFEINE)'
+2022-12-04 01:29:46.767 +02:00 [INF] Response:
+StatusCode: 200
+Content-Type: text/html; charset=utf-8
+Date: Sat, 03 Dec 2022 23:29:46 GMT
+Server: Kestrel
+Cache-Control: [Redacted]
+Pragma: [Redacted]
+2022-12-04 01:29:46.767 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5001/Home/UploadGet - - - 200 - text/html;+charset=utf-8 1.4315ms
+2022-12-04 01:29:51.305 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5001/Home/Upload multipart/form-data;+boundary=----WebKitFormBoundarytN32QnWDDfn1Zw4p 8005081
+2022-12-04 01:29:51.305 +02:00 [INF] Request:
+Protocol: HTTP/2
+Method: POST
+Scheme: https
+PathBase: 
+Path: /Home/Upload
+Accept: */*
+Host: localhost:5001
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.62
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9,ro;q=0.8,hu;q=0.7,de;q=0.6
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundarytN32QnWDDfn1Zw4p
+Cookie: [Redacted]
+Origin: [Redacted]
+Referer: [Redacted]
+Content-Length: 8005081
+sec-ch-ua: [Redacted]
+X-Requested-With: XMLHttpRequest
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+2022-12-04 01:29:51.306 +02:00 [INF] Executing endpoint 'CAFFEINE.Controllers.HomeController.Upload (CAFFEINE)'
+2022-12-04 01:29:51.306 +02:00 [INF] Route matched with {action = "Upload", controller = "Home", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Upload() on controller CAFFEINE.Controllers.HomeController (CAFFEINE).
+2022-12-04 01:29:56.052 +02:00 [INF] 04/12/2022 01:29:56 test2@test.com CAFFEINE.Controllers.HomeController.MoveNext
+2022-12-04 01:29:57.022 +02:00 [INF] Entity Framework Core 3.1.25 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2022-12-04 01:29:57.290 +02:00 [INF] Executed DbCommand (265ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (DbType = Int32), @p2='?' (DbType = Int32), @p3='?' (DbType = Int32), @p4='?' (DbType = Int32), @p5='?' (DbType = Int32), @p6='?' (Size = -1) (DbType = Binary), @p7='?' (Size = -1) (DbType = Binary)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Caffs] ([Creator], [Day], [Hour], [Minute], [Month], [Year], [gifContent], [originalContent])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+SELECT [DB_ID]
+FROM [Caffs]
+WHERE @@ROWCOUNT = 1 AND [DB_ID] = scope_identity();
+2022-12-04 01:29:57.305 +02:00 [INF] Executed DbCommand (14ms) [Parameters=[@p8='?' (DbType = Int32), @p9='?' (Size = 4000), @p10='?' (DbType = Int32), @p11='?' (DbType = Int32), @p12='?' (Size = 8000) (DbType = Binary), @p13='?' (DbType = Int32), @p14='?' (DbType = Int32), @p15='?' (Size = 4000), @p16='?' (DbType = Int32), @p17='?' (DbType = Int32), @p18='?' (Size = 8000) (DbType = Binary), @p19='?' (DbType = Int32), @p20='?' (DbType = Int32), @p21='?' (Size = 4000), @p22='?' (DbType = Int32), @p23='?' (DbType = Int32), @p24='?' (Size = 8000) (DbType = Binary), @p25='?' (DbType = Int32), @p26='?' (DbType = Int32), @p27='?' (Size = 4000), @p28='?' (DbType = Int32), @p29='?' (DbType = Int32), @p30='?' (Size = 8000) (DbType = Binary), @p31='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+DECLARE @inserted0 TABLE ([DB_ID] int, [_Position] [int]);
+MERGE [Ciffs] USING (
+VALUES (@p8, @p9, @p10, @p11, @p12, @p13, 0),
+(@p14, @p15, @p16, @p17, @p18, @p19, 1),
+(@p20, @p21, @p22, @p23, @p24, @p25, 2),
+(@p26, @p27, @p28, @p29, @p30, @p31, 3)) AS i ([CaffDB_ID], [Caption], [Duration], [Height], [Pixels], [Width], _Position) ON 1=0
+WHEN NOT MATCHED THEN
+INSERT ([CaffDB_ID], [Caption], [Duration], [Height], [Pixels], [Width])
+VALUES (i.[CaffDB_ID], i.[Caption], i.[Duration], i.[Height], i.[Pixels], i.[Width])
+OUTPUT INSERTED.[DB_ID], i._Position
+INTO @inserted0;
+
+SELECT [t].[DB_ID] FROM [Ciffs] t
+INNER JOIN @inserted0 i ON ([t].[DB_ID] = [i].[DB_ID])
+ORDER BY [i].[_Position];
+2022-12-04 01:29:57.316 +02:00 [INF] Executed DbCommand (10ms) [Parameters=[@p32='?' (DbType = Int32), @p33='?' (Size = 4000), @p34='?' (DbType = Int32), @p35='?' (Size = 4000), @p36='?' (DbType = Int32), @p37='?' (Size = 4000), @p38='?' (DbType = Int32), @p39='?' (Size = 4000), @p40='?' (DbType = Int32), @p41='?' (Size = 4000), @p42='?' (DbType = Int32), @p43='?' (Size = 4000), @p44='?' (DbType = Int32), @p45='?' (Size = 4000), @p46='?' (DbType = Int32), @p47='?' (Size = 4000), @p48='?' (DbType = Int32), @p49='?' (Size = 4000), @p50='?' (DbType = Int32), @p51='?' (Size = 4000), @p52='?' (DbType = Int32), @p53='?' (Size = 4000), @p54='?' (DbType = Int32), @p55='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+DECLARE @inserted0 TABLE ([DB_ID] int, [_Position] [int]);
+MERGE [Tags] USING (
+VALUES (@p32, @p33, 0),
+(@p34, @p35, 1),
+(@p36, @p37, 2),
+(@p38, @p39, 3),
+(@p40, @p41, 4),
+(@p42, @p43, 5),
+(@p44, @p45, 6),
+(@p46, @p47, 7),
+(@p48, @p49, 8),
+(@p50, @p51, 9),
+(@p52, @p53, 10),
+(@p54, @p55, 11)) AS i ([CiffDB_ID], [Text], _Position) ON 1=0
+WHEN NOT MATCHED THEN
+INSERT ([CiffDB_ID], [Text])
+VALUES (i.[CiffDB_ID], i.[Text])
+OUTPUT INSERTED.[DB_ID], i._Position
+INTO @inserted0;
+
+SELECT [t].[DB_ID] FROM [Tags] t
+INNER JOIN @inserted0 i ON ([t].[DB_ID] = [i].[DB_ID])
+ORDER BY [i].[_Position];
+2022-12-04 01:29:57.317 +02:00 [INF] Executing JsonResult, writing value of type '<>f__AnonymousType0`1[[System.Boolean, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2022-12-04 01:29:57.318 +02:00 [INF] Executed action CAFFEINE.Controllers.HomeController.Upload (CAFFEINE) in 6011.7841ms
+2022-12-04 01:29:57.318 +02:00 [INF] Executed endpoint 'CAFFEINE.Controllers.HomeController.Upload (CAFFEINE)'
+2022-12-04 01:29:57.318 +02:00 [INF] Response:
+StatusCode: 200
+Content-Type: application/json; charset=utf-8
+Date: Sat, 03 Dec 2022 23:29:57 GMT
+Server: Kestrel
+2022-12-04 01:29:57.320 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5001/Home/Upload multipart/form-data;+boundary=----WebKitFormBoundarytN32QnWDDfn1Zw4p 8005081 - 200 - application/json;+charset=utf-8 6014.8010ms
+2022-12-04 01:29:57.340 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5001/ - -
+2022-12-04 01:29:57.342 +02:00 [INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Host: localhost:5001
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.62
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9,ro;q=0.8,hu;q=0.7,de;q=0.6
+Cache-Control: max-age=0
+Cookie: [Redacted]
+Referer: [Redacted]
+Upgrade-Insecure-Requests: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+2022-12-04 01:29:57.343 +02:00 [INF] Executing endpoint 'CAFFEINE.Controllers.HomeController.Index (CAFFEINE)'
+2022-12-04 01:29:57.343 +02:00 [INF] Route matched with {action = "Index", controller = "Home", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(System.String, System.String) on controller CAFFEINE.Controllers.HomeController (CAFFEINE).
+2022-12-04 01:29:57.343 +02:00 [INF] 04/12/2022 01:29:57 test2@test.com CAFFEINE.Controllers.HomeController.Index
+2022-12-04 01:29:57.343 +02:00 [INF] Entity Framework Core 3.1.25 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2022-12-04 01:29:57.347 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[DB_ID], [c].[gifContent], [c].[Creator], [c].[Day], [c].[Hour], [c].[Minute], [c].[Month], [c].[Year], [t0].[DB_ID], [t0].[CaffDB_ID], [t0].[Caption], [t0].[Duration], [t0].[Height], [t0].[Pixels], [t0].[Width], [t0].[DB_ID0], [t0].[CiffDB_ID], [t0].[Text], [c1].[DB_ID], [c1].[CaffDB_ID], [c1].[Creator], [c1].[DT_Created], [c1].[Text]
+FROM [Caffs] AS [c]
+LEFT JOIN (
+    SELECT [c0].[DB_ID], [c0].[CaffDB_ID], [c0].[Caption], [c0].[Duration], [c0].[Height], [c0].[Pixels], [c0].[Width], [t].[DB_ID] AS [DB_ID0], [t].[CiffDB_ID], [t].[Text]
+    FROM [Ciffs] AS [c0]
+    LEFT JOIN [Tags] AS [t] ON [c0].[DB_ID] = [t].[CiffDB_ID]
+) AS [t0] ON [c].[DB_ID] = [t0].[CaffDB_ID]
+LEFT JOIN [Comments] AS [c1] ON [c].[DB_ID] = [c1].[CaffDB_ID]
+ORDER BY [c].[DB_ID], [t0].[DB_ID], [t0].[DB_ID0], [c1].[DB_ID]
+2022-12-04 01:29:57.478 +02:00 [INF] Executing ViewResult, running view Index.
+2022-12-04 01:29:57.562 +02:00 [INF] Executed ViewResult - view Index executed in 84.3494ms.
+2022-12-04 01:29:57.562 +02:00 [INF] Executed action CAFFEINE.Controllers.HomeController.Index (CAFFEINE) in 219.5108ms
+2022-12-04 01:29:57.562 +02:00 [INF] Executed endpoint 'CAFFEINE.Controllers.HomeController.Index (CAFFEINE)'
+2022-12-04 01:29:57.563 +02:00 [INF] Response:
+StatusCode: 200
+Content-Type: text/html; charset=utf-8
+Cache-Control: [Redacted]
+Pragma: [Redacted]
+2022-12-04 01:29:58.501 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5001/ - - - 200 - text/html;+charset=utf-8 1160.5598ms
+2022-12-04 01:29:58.564 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5001/bootstrap/js/bootstrap.min.js - -
+2022-12-04 01:29:58.564 +02:00 [INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /bootstrap/js/bootstrap.min.js
+Accept: */*
+Host: localhost:5001
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.62
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9,ro;q=0.8,hu;q=0.7,de;q=0.6
+Cookie: [Redacted]
+Referer: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+2022-12-04 01:29:58.565 +02:00 [INF] Response:
+StatusCode: 404
+2022-12-04 01:29:58.565 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5001/bootstrap/js/bootstrap.min.js - - - 404 0 - 1.3337ms
+2022-12-04 01:29:58.608 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_framework/aspnetcore-browser-refresh.js - -
+2022-12-04 01:29:58.608 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_vs/browserLink - -
+2022-12-04 01:29:58.608 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 0.7358ms
+2022-12-04 01:29:58.615 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 7.5962ms
+2022-12-04 01:30:00.945 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5001/Home/UploadGet - -
+2022-12-04 01:30:00.945 +02:00 [INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /Home/UploadGet
+Accept: */*
+Host: localhost:5001
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.62
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9,ro;q=0.8,hu;q=0.7,de;q=0.6
+Cookie: [Redacted]
+Referer: [Redacted]
+sec-ch-ua: [Redacted]
+X-Requested-With: XMLHttpRequest
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+2022-12-04 01:30:00.946 +02:00 [INF] Executing endpoint 'CAFFEINE.Controllers.HomeController.UploadGet (CAFFEINE)'
+2022-12-04 01:30:00.946 +02:00 [INF] Route matched with {action = "UploadGet", controller = "Home", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UploadGet() on controller CAFFEINE.Controllers.HomeController (CAFFEINE).
+2022-12-04 01:30:00.946 +02:00 [INF] 04/12/2022 01:30:00 test2@test.com CAFFEINE.Controllers.HomeController.MoveNext
+2022-12-04 01:30:00.946 +02:00 [INF] Executing PartialViewResult, running view ~/Views/Home/PartialViews/Upload.cshtml.
+2022-12-04 01:30:00.947 +02:00 [INF] Executed PartialViewResult - view ~/Views/Home/PartialViews/Upload.cshtml executed in 0.65ms.
+2022-12-04 01:30:00.947 +02:00 [INF] Executed action CAFFEINE.Controllers.HomeController.UploadGet (CAFFEINE) in 1.1202ms
+2022-12-04 01:30:00.947 +02:00 [INF] Executed endpoint 'CAFFEINE.Controllers.HomeController.UploadGet (CAFFEINE)'
+2022-12-04 01:30:00.947 +02:00 [INF] Response:
+StatusCode: 200
+Content-Type: text/html; charset=utf-8
+Date: Sat, 03 Dec 2022 23:30:00 GMT
+Server: Kestrel
+Cache-Control: [Redacted]
+Pragma: [Redacted]
+2022-12-04 01:30:00.947 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5001/Home/UploadGet - - - 200 - text/html;+charset=utf-8 2.6241ms
+2022-12-04 01:30:06.264 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5001/Home/Upload multipart/form-data;+boundary=----WebKitFormBoundaryPAvBqVCU4gwkgmYE 4002871
+2022-12-04 01:30:06.264 +02:00 [INF] Request:
+Protocol: HTTP/2
+Method: POST
+Scheme: https
+PathBase: 
+Path: /Home/Upload
+Accept: */*
+Host: localhost:5001
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.62
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9,ro;q=0.8,hu;q=0.7,de;q=0.6
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryPAvBqVCU4gwkgmYE
+Cookie: [Redacted]
+Origin: [Redacted]
+Referer: [Redacted]
+Content-Length: 4002871
+sec-ch-ua: [Redacted]
+X-Requested-With: XMLHttpRequest
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+2022-12-04 01:30:06.266 +02:00 [INF] Executing endpoint 'CAFFEINE.Controllers.HomeController.Upload (CAFFEINE)'
+2022-12-04 01:30:06.266 +02:00 [INF] Route matched with {action = "Upload", controller = "Home", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Upload() on controller CAFFEINE.Controllers.HomeController (CAFFEINE).
+2022-12-04 01:30:06.458 +02:00 [INF] 04/12/2022 01:30:06 test2@test.com CAFFEINE.Controllers.HomeController.MoveNext
+2022-12-04 01:30:06.919 +02:00 [INF] Entity Framework Core 3.1.25 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2022-12-04 01:30:07.041 +02:00 [INF] Executed DbCommand (121ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (DbType = Int32), @p2='?' (DbType = Int32), @p3='?' (DbType = Int32), @p4='?' (DbType = Int32), @p5='?' (DbType = Int32), @p6='?' (Size = -1) (DbType = Binary), @p7='?' (Size = -1) (DbType = Binary)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Caffs] ([Creator], [Day], [Hour], [Minute], [Month], [Year], [gifContent], [originalContent])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+SELECT [DB_ID]
+FROM [Caffs]
+WHERE @@ROWCOUNT = 1 AND [DB_ID] = scope_identity();
+2022-12-04 01:30:07.042 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p2='?' (DbType = Int32), @p3='?' (DbType = Int32), @p4='?' (Size = 8000) (DbType = Binary), @p5='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Ciffs] ([CaffDB_ID], [Caption], [Duration], [Height], [Pixels], [Width])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+SELECT [DB_ID]
+FROM [Ciffs]
+WHERE @@ROWCOUNT = 1 AND [DB_ID] = scope_identity();
+2022-12-04 01:30:07.043 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p2='?' (DbType = Int32), @p3='?' (DbType = Int32), @p4='?' (Size = 8000) (DbType = Binary), @p5='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Ciffs] ([CaffDB_ID], [Caption], [Duration], [Height], [Pixels], [Width])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+SELECT [DB_ID]
+FROM [Ciffs]
+WHERE @@ROWCOUNT = 1 AND [DB_ID] = scope_identity();
+2022-12-04 01:30:07.053 +02:00 [INF] Executed DbCommand (9ms) [Parameters=[@p6='?' (DbType = Int32), @p7='?' (Size = 4000), @p8='?' (DbType = Int32), @p9='?' (Size = 4000), @p10='?' (DbType = Int32), @p11='?' (Size = 4000), @p12='?' (DbType = Int32), @p13='?' (Size = 4000), @p14='?' (DbType = Int32), @p15='?' (Size = 4000), @p16='?' (DbType = Int32), @p17='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+DECLARE @inserted0 TABLE ([DB_ID] int, [_Position] [int]);
+MERGE [Tags] USING (
+VALUES (@p6, @p7, 0),
+(@p8, @p9, 1),
+(@p10, @p11, 2),
+(@p12, @p13, 3),
+(@p14, @p15, 4),
+(@p16, @p17, 5)) AS i ([CiffDB_ID], [Text], _Position) ON 1=0
+WHEN NOT MATCHED THEN
+INSERT ([CiffDB_ID], [Text])
+VALUES (i.[CiffDB_ID], i.[Text])
+OUTPUT INSERTED.[DB_ID], i._Position
+INTO @inserted0;
+
+SELECT [t].[DB_ID] FROM [Tags] t
+INNER JOIN @inserted0 i ON ([t].[DB_ID] = [i].[DB_ID])
+ORDER BY [i].[_Position];
+2022-12-04 01:30:07.054 +02:00 [INF] Executing JsonResult, writing value of type '<>f__AnonymousType0`1[[System.Boolean, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2022-12-04 01:30:07.054 +02:00 [INF] Executed action CAFFEINE.Controllers.HomeController.Upload (CAFFEINE) in 788.1413ms
+2022-12-04 01:30:07.055 +02:00 [INF] Executed endpoint 'CAFFEINE.Controllers.HomeController.Upload (CAFFEINE)'
+2022-12-04 01:30:07.055 +02:00 [INF] Response:
+StatusCode: 200
+Content-Type: application/json; charset=utf-8
+Date: Sat, 03 Dec 2022 23:30:06 GMT
+Server: Kestrel
+2022-12-04 01:30:07.056 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5001/Home/Upload multipart/form-data;+boundary=----WebKitFormBoundaryPAvBqVCU4gwkgmYE 4002871 - 200 - application/json;+charset=utf-8 792.2501ms
+2022-12-04 01:30:07.066 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5001/ - -
+2022-12-04 01:30:07.068 +02:00 [INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Host: localhost:5001
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.62
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9,ro;q=0.8,hu;q=0.7,de;q=0.6
+Cache-Control: max-age=0
+Cookie: [Redacted]
+Referer: [Redacted]
+Upgrade-Insecure-Requests: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-user: [Redacted]
+sec-fetch-dest: [Redacted]
+2022-12-04 01:30:07.068 +02:00 [INF] Executing endpoint 'CAFFEINE.Controllers.HomeController.Index (CAFFEINE)'
+2022-12-04 01:30:07.068 +02:00 [INF] Route matched with {action = "Index", controller = "Home", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(System.String, System.String) on controller CAFFEINE.Controllers.HomeController (CAFFEINE).
+2022-12-04 01:30:07.069 +02:00 [INF] 04/12/2022 01:30:07 test2@test.com CAFFEINE.Controllers.HomeController.Index
+2022-12-04 01:30:07.069 +02:00 [INF] Entity Framework Core 3.1.25 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2022-12-04 01:30:07.071 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[DB_ID], [c].[gifContent], [c].[Creator], [c].[Day], [c].[Hour], [c].[Minute], [c].[Month], [c].[Year], [t0].[DB_ID], [t0].[CaffDB_ID], [t0].[Caption], [t0].[Duration], [t0].[Height], [t0].[Pixels], [t0].[Width], [t0].[DB_ID0], [t0].[CiffDB_ID], [t0].[Text], [c1].[DB_ID], [c1].[CaffDB_ID], [c1].[Creator], [c1].[DT_Created], [c1].[Text]
+FROM [Caffs] AS [c]
+LEFT JOIN (
+    SELECT [c0].[DB_ID], [c0].[CaffDB_ID], [c0].[Caption], [c0].[Duration], [c0].[Height], [c0].[Pixels], [c0].[Width], [t].[DB_ID] AS [DB_ID0], [t].[CiffDB_ID], [t].[Text]
+    FROM [Ciffs] AS [c0]
+    LEFT JOIN [Tags] AS [t] ON [c0].[DB_ID] = [t].[CiffDB_ID]
+) AS [t0] ON [c].[DB_ID] = [t0].[CaffDB_ID]
+LEFT JOIN [Comments] AS [c1] ON [c].[DB_ID] = [c1].[CaffDB_ID]
+ORDER BY [c].[DB_ID], [t0].[DB_ID], [t0].[DB_ID0], [c1].[DB_ID]
+2022-12-04 01:30:07.214 +02:00 [INF] Executing ViewResult, running view Index.
+2022-12-04 01:30:07.303 +02:00 [INF] Executed ViewResult - view Index executed in 88.7011ms.
+2022-12-04 01:30:07.303 +02:00 [INF] Executed action CAFFEINE.Controllers.HomeController.Index (CAFFEINE) in 234.612ms
+2022-12-04 01:30:07.303 +02:00 [INF] Executed endpoint 'CAFFEINE.Controllers.HomeController.Index (CAFFEINE)'
+2022-12-04 01:30:07.303 +02:00 [INF] Response:
+StatusCode: 200
+Content-Type: text/html; charset=utf-8
+Cache-Control: [Redacted]
+Pragma: [Redacted]
+2022-12-04 01:30:08.267 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5001/ - - - 200 - text/html;+charset=utf-8 1201.2276ms
+2022-12-04 01:30:08.353 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5001/bootstrap/js/bootstrap.min.js - -
+2022-12-04 01:30:08.354 +02:00 [INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /bootstrap/js/bootstrap.min.js
+Accept: */*
+Host: localhost:5001
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.62
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9,ro;q=0.8,hu;q=0.7,de;q=0.6
+Cookie: [Redacted]
+Referer: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+2022-12-04 01:30:08.354 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_framework/aspnetcore-browser-refresh.js - -
+2022-12-04 01:30:08.355 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 0.4060ms
+2022-12-04 01:30:08.355 +02:00 [INF] Response:
+StatusCode: 404
+2022-12-04 01:30:08.355 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5001/bootstrap/js/bootstrap.min.js - - - 404 0 - 2.7764ms
+2022-12-04 01:30:08.356 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_vs/browserLink - -
+2022-12-04 01:30:08.364 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 8.0402ms
+2022-12-04 01:30:22.173 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5001/Home/Download?id=14 - -
+2022-12-04 01:30:22.177 +02:00 [INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /Home/Download
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Host: localhost:5001
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.62
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9,ro;q=0.8,hu;q=0.7,de;q=0.6
+Cookie: [Redacted]
+Referer: [Redacted]
+Upgrade-Insecure-Requests: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-user: [Redacted]
+sec-fetch-dest: [Redacted]
+2022-12-04 01:30:22.177 +02:00 [INF] Executing endpoint 'CAFFEINE.Controllers.HomeController.Download (CAFFEINE)'
+2022-12-04 01:30:22.186 +02:00 [INF] Route matched with {action = "Download", controller = "Home", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Download(Int32) on controller CAFFEINE.Controllers.HomeController (CAFFEINE).
+2022-12-04 01:30:22.204 +02:00 [INF] 04/12/2022 01:30:22 test2@test.com CAFFEINE.Controllers.HomeController.MoveNext
+2022-12-04 01:30:22.206 +02:00 [INF] Entity Framework Core 3.1.25 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2022-12-04 01:30:22.239 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[DB_ID], [t].[Creator], [t].[Day], [t].[Hour], [t].[Minute], [t].[Month], [t].[Year], [t].[gifContent], [t].[originalContent], [c0].[DB_ID], [c0].[CaffDB_ID], [c0].[Creator], [c0].[DT_Created], [c0].[Text], [t1].[DB_ID], [t1].[CaffDB_ID], [t1].[Caption], [t1].[Duration], [t1].[Height], [t1].[Pixels], [t1].[Width], [t1].[DB_ID0], [t1].[CiffDB_ID], [t1].[Text]
+FROM (
+    SELECT TOP(1) [c].[DB_ID], [c].[Creator], [c].[Day], [c].[Hour], [c].[Minute], [c].[Month], [c].[Year], [c].[gifContent], [c].[originalContent]
+    FROM [Caffs] AS [c]
+    WHERE [c].[DB_ID] = @__id_0
+) AS [t]
+LEFT JOIN [Comments] AS [c0] ON [t].[DB_ID] = [c0].[CaffDB_ID]
+LEFT JOIN (
+    SELECT [c1].[DB_ID], [c1].[CaffDB_ID], [c1].[Caption], [c1].[Duration], [c1].[Height], [c1].[Pixels], [c1].[Width], [t0].[DB_ID] AS [DB_ID0], [t0].[CiffDB_ID], [t0].[Text]
+    FROM [Ciffs] AS [c1]
+    LEFT JOIN [Tags] AS [t0] ON [c1].[DB_ID] = [t0].[CiffDB_ID]
+) AS [t1] ON [t].[DB_ID] = [t1].[CaffDB_ID]
+ORDER BY [t].[DB_ID], [c0].[DB_ID], [t1].[DB_ID], [t1].[DB_ID0]
+2022-12-04 01:30:22.388 +02:00 [INF] Executing FileStreamResult, sending file with download name '.caff' ...
+2022-12-04 01:30:22.430 +02:00 [INF] Executed action CAFFEINE.Controllers.HomeController.Download (CAFFEINE) in 243.275ms
+2022-12-04 01:30:22.430 +02:00 [INF] Executed endpoint 'CAFFEINE.Controllers.HomeController.Download (CAFFEINE)'
+2022-12-04 01:30:22.430 +02:00 [INF] Response:
+StatusCode: 200
+Content-Type: text/plain
+Date: Sat, 03 Dec 2022 23:30:21 GMT
+Server: Kestrel
+Content-Length: 4002248
+Content-Disposition: attachment; filename=.caff; filename*=UTF-8''.caff
+2022-12-04 01:30:22.430 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5001/Home/Download?id=14 - - - 200 4002248 text/plain 256.6999ms
+2022-12-04 01:30:34.104 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5001/Home/Search application/x-www-form-urlencoded 247
+2022-12-04 01:30:34.105 +02:00 [INF] Request:
+Protocol: HTTP/2
+Method: POST
+Scheme: https
+PathBase: 
+Path: /Home/Search
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Host: localhost:5001
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.62
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9,ro;q=0.8,hu;q=0.7,de;q=0.6
+Cache-Control: max-age=0
+Content-Type: application/x-www-form-urlencoded
+Cookie: [Redacted]
+Origin: [Redacted]
+Referer: [Redacted]
+Upgrade-Insecure-Requests: [Redacted]
+Content-Length: 247
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-user: [Redacted]
+sec-fetch-dest: [Redacted]
+2022-12-04 01:30:34.106 +02:00 [INF] Executing endpoint 'CAFFEINE.Controllers.HomeController.Search (CAFFEINE)'
+2022-12-04 01:30:34.110 +02:00 [INF] Route matched with {action = "Search", controller = "Home", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Search() on controller CAFFEINE.Controllers.HomeController (CAFFEINE).
+2022-12-04 01:30:34.116 +02:00 [INF] 04/12/2022 01:30:34 test2@test.com CAFFEINE.Controllers.HomeController.MoveNext
+2022-12-04 01:30:34.117 +02:00 [INF] Executing RedirectResult, redirecting to /?creator=Test.
+2022-12-04 01:30:34.117 +02:00 [INF] Executed action CAFFEINE.Controllers.HomeController.Search (CAFFEINE) in 6.6792ms
+2022-12-04 01:30:34.117 +02:00 [INF] Executed endpoint 'CAFFEINE.Controllers.HomeController.Search (CAFFEINE)'
+2022-12-04 01:30:34.117 +02:00 [INF] Response:
+StatusCode: 302
+Location: /?creator=Test
+2022-12-04 01:30:34.117 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5001/Home/Search application/x-www-form-urlencoded 247 - 302 0 - 13.3294ms
+2022-12-04 01:30:34.122 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5001/?creator=Test - -
+2022-12-04 01:30:34.124 +02:00 [INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Host: localhost:5001
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.62
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9,ro;q=0.8,hu;q=0.7,de;q=0.6
+Cache-Control: max-age=0
+Cookie: [Redacted]
+Referer: [Redacted]
+Upgrade-Insecure-Requests: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-user: [Redacted]
+sec-fetch-dest: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+2022-12-04 01:30:34.124 +02:00 [INF] Executing endpoint 'CAFFEINE.Controllers.HomeController.Index (CAFFEINE)'
+2022-12-04 01:30:34.124 +02:00 [INF] Route matched with {action = "Index", controller = "Home", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(System.String, System.String) on controller CAFFEINE.Controllers.HomeController (CAFFEINE).
+2022-12-04 01:30:34.125 +02:00 [INF] 04/12/2022 01:30:34 test2@test.com CAFFEINE.Controllers.HomeController.Index
+2022-12-04 01:30:34.126 +02:00 [INF] Entity Framework Core 3.1.25 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2022-12-04 01:30:34.183 +02:00 [INF] Executed DbCommand (9ms) [Parameters=[@__ToLower_0='?' (Size = 4000), @__ToLower_1='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[DB_ID], [c].[Creator], [c].[Day], [c].[Hour], [c].[Minute], [c].[Month], [c].[Year], [c].[gifContent], [c].[originalContent], [c0].[DB_ID], [c0].[CaffDB_ID], [c0].[Caption], [c0].[Duration], [c0].[Height], [c0].[Pixels], [c0].[Width]
+FROM [Caffs] AS [c]
+LEFT JOIN [Ciffs] AS [c0] ON [c].[DB_ID] = [c0].[CaffDB_ID]
+WHERE ((@__ToLower_0 = N'') OR (CHARINDEX(@__ToLower_0, LOWER([c].[Creator])) > 0)) AND EXISTS (
+    SELECT 1
+    FROM [Ciffs] AS [c1]
+    WHERE ([c].[DB_ID] = [c1].[CaffDB_ID]) AND ((@__ToLower_1 = N'') OR (CHARINDEX(@__ToLower_1, LOWER([c1].[Caption])) > 0)))
+ORDER BY [c].[DB_ID], [c0].[DB_ID]
+2022-12-04 01:30:34.293 +02:00 [INF] Executing ViewResult, running view Index.
+2022-12-04 01:30:34.321 +02:00 [INF] Executed ViewResult - view Index executed in 28.097ms.
+2022-12-04 01:30:34.322 +02:00 [INF] Executed action CAFFEINE.Controllers.HomeController.Index (CAFFEINE) in 197.3787ms
+2022-12-04 01:30:34.322 +02:00 [INF] Executed endpoint 'CAFFEINE.Controllers.HomeController.Index (CAFFEINE)'
+2022-12-04 01:30:34.322 +02:00 [INF] Response:
+StatusCode: 200
+Content-Type: text/html; charset=utf-8
+Cache-Control: [Redacted]
+Pragma: [Redacted]
+2022-12-04 01:30:34.615 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5001/?creator=Test - - - 200 - text/html;+charset=utf-8 493.0664ms
+2022-12-04 01:30:34.638 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5001/bootstrap/js/bootstrap.min.js - -
+2022-12-04 01:30:34.638 +02:00 [INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /bootstrap/js/bootstrap.min.js
+Accept: */*
+Host: localhost:5001
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.62
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9,ro;q=0.8,hu;q=0.7,de;q=0.6
+Cookie: [Redacted]
+Referer: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+2022-12-04 01:30:34.639 +02:00 [INF] Response:
+StatusCode: 404
+2022-12-04 01:30:34.639 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5001/bootstrap/js/bootstrap.min.js - - - 404 0 - 0.9434ms
+2022-12-04 01:30:34.657 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_framework/aspnetcore-browser-refresh.js - -
+2022-12-04 01:30:34.658 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_vs/browserLink - -
+2022-12-04 01:30:34.658 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 0.6060ms
+2022-12-04 01:30:34.672 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 14.1076ms
+2022-12-04 01:30:39.168 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5001/Home/Search application/x-www-form-urlencoded 249
+2022-12-04 01:30:39.169 +02:00 [INF] Request:
+Protocol: HTTP/2
+Method: POST
+Scheme: https
+PathBase: 
+Path: /Home/Search
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Host: localhost:5001
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.62
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9,ro;q=0.8,hu;q=0.7,de;q=0.6
+Cache-Control: max-age=0
+Content-Type: application/x-www-form-urlencoded
+Cookie: [Redacted]
+Origin: [Redacted]
+Referer: [Redacted]
+Upgrade-Insecure-Requests: [Redacted]
+Content-Length: 249
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-user: [Redacted]
+sec-fetch-dest: [Redacted]
+2022-12-04 01:30:39.170 +02:00 [INF] Executing endpoint 'CAFFEINE.Controllers.HomeController.Search (CAFFEINE)'
+2022-12-04 01:30:39.170 +02:00 [INF] Route matched with {action = "Search", controller = "Home", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Search() on controller CAFFEINE.Controllers.HomeController (CAFFEINE).
+2022-12-04 01:30:39.171 +02:00 [INF] 04/12/2022 01:30:39 test2@test.com CAFFEINE.Controllers.HomeController.MoveNext
+2022-12-04 01:30:39.171 +02:00 [INF] Executing RedirectResult, redirecting to /?creator=Second.
+2022-12-04 01:30:39.172 +02:00 [INF] Executed action CAFFEINE.Controllers.HomeController.Search (CAFFEINE) in 0.9577ms
+2022-12-04 01:30:39.172 +02:00 [INF] Executed endpoint 'CAFFEINE.Controllers.HomeController.Search (CAFFEINE)'
+2022-12-04 01:30:39.172 +02:00 [INF] Response:
+StatusCode: 302
+Location: /?creator=Second
+2022-12-04 01:30:39.172 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5001/Home/Search application/x-www-form-urlencoded 249 - 302 0 - 4.3395ms
+2022-12-04 01:30:39.182 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5001/?creator=Second - -
+2022-12-04 01:30:39.186 +02:00 [INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Host: localhost:5001
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.62
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9,ro;q=0.8,hu;q=0.7,de;q=0.6
+Cache-Control: max-age=0
+Cookie: [Redacted]
+Referer: [Redacted]
+Upgrade-Insecure-Requests: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-user: [Redacted]
+sec-fetch-dest: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+2022-12-04 01:30:39.187 +02:00 [INF] Executing endpoint 'CAFFEINE.Controllers.HomeController.Index (CAFFEINE)'
+2022-12-04 01:30:39.187 +02:00 [INF] Route matched with {action = "Index", controller = "Home", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(System.String, System.String) on controller CAFFEINE.Controllers.HomeController (CAFFEINE).
+2022-12-04 01:30:39.187 +02:00 [INF] 04/12/2022 01:30:39 test2@test.com CAFFEINE.Controllers.HomeController.Index
+2022-12-04 01:30:39.188 +02:00 [INF] Entity Framework Core 3.1.25 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2022-12-04 01:30:39.193 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__ToLower_0='?' (Size = 4000), @__ToLower_1='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[DB_ID], [c].[Creator], [c].[Day], [c].[Hour], [c].[Minute], [c].[Month], [c].[Year], [c].[gifContent], [c].[originalContent], [c0].[DB_ID], [c0].[CaffDB_ID], [c0].[Caption], [c0].[Duration], [c0].[Height], [c0].[Pixels], [c0].[Width]
+FROM [Caffs] AS [c]
+LEFT JOIN [Ciffs] AS [c0] ON [c].[DB_ID] = [c0].[CaffDB_ID]
+WHERE ((@__ToLower_0 = N'') OR (CHARINDEX(@__ToLower_0, LOWER([c].[Creator])) > 0)) AND EXISTS (
+    SELECT 1
+    FROM [Ciffs] AS [c1]
+    WHERE ([c].[DB_ID] = [c1].[CaffDB_ID]) AND ((@__ToLower_1 = N'') OR (CHARINDEX(@__ToLower_1, LOWER([c1].[Caption])) > 0)))
+ORDER BY [c].[DB_ID], [c0].[DB_ID]
+2022-12-04 01:30:39.380 +02:00 [INF] Executing ViewResult, running view Index.
+2022-12-04 01:30:39.408 +02:00 [INF] Executed ViewResult - view Index executed in 28.3244ms.
+2022-12-04 01:30:39.408 +02:00 [INF] Executed action CAFFEINE.Controllers.HomeController.Index (CAFFEINE) in 221.2293ms
+2022-12-04 01:30:39.408 +02:00 [INF] Executed endpoint 'CAFFEINE.Controllers.HomeController.Index (CAFFEINE)'
+2022-12-04 01:30:39.409 +02:00 [INF] Response:
+StatusCode: 200
+Content-Type: text/html; charset=utf-8
+Cache-Control: [Redacted]
+Pragma: [Redacted]
+2022-12-04 01:30:39.682 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5001/?creator=Second - - - 200 - text/html;+charset=utf-8 499.7900ms
+2022-12-04 01:30:39.730 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5001/bootstrap/js/bootstrap.min.js - -
+2022-12-04 01:30:39.731 +02:00 [INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /bootstrap/js/bootstrap.min.js
+Accept: */*
+Host: localhost:5001
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.62
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9,ro;q=0.8,hu;q=0.7,de;q=0.6
+Cookie: [Redacted]
+Referer: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+2022-12-04 01:30:39.731 +02:00 [INF] Response:
+StatusCode: 404
+2022-12-04 01:30:39.731 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5001/bootstrap/js/bootstrap.min.js - - - 404 0 - 0.9569ms
+2022-12-04 01:30:39.744 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_framework/aspnetcore-browser-refresh.js - -
+2022-12-04 01:30:39.745 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_vs/browserLink - -
+2022-12-04 01:30:39.745 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 0.7122ms
+2022-12-04 01:30:39.755 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 10.4618ms
+2022-12-04 01:30:47.347 +02:00 [INF] Request starting HTTP/2 POST https://localhost:5001/Home/Search application/x-www-form-urlencoded 250
+2022-12-04 01:30:47.348 +02:00 [INF] Request:
+Protocol: HTTP/2
+Method: POST
+Scheme: https
+PathBase: 
+Path: /Home/Search
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Host: localhost:5001
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.62
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9,ro;q=0.8,hu;q=0.7,de;q=0.6
+Cache-Control: max-age=0
+Content-Type: application/x-www-form-urlencoded
+Cookie: [Redacted]
+Origin: [Redacted]
+Referer: [Redacted]
+Upgrade-Insecure-Requests: [Redacted]
+Content-Length: 250
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-user: [Redacted]
+sec-fetch-dest: [Redacted]
+2022-12-04 01:30:47.348 +02:00 [INF] Executing endpoint 'CAFFEINE.Controllers.HomeController.Search (CAFFEINE)'
+2022-12-04 01:30:47.348 +02:00 [INF] Route matched with {action = "Search", controller = "Home", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Search() on controller CAFFEINE.Controllers.HomeController (CAFFEINE).
+2022-12-04 01:30:47.349 +02:00 [INF] 04/12/2022 01:30:47 test2@test.com CAFFEINE.Controllers.HomeController.MoveNext
+2022-12-04 01:30:47.349 +02:00 [INF] Executing RedirectResult, redirecting to /?creator=Creator.
+2022-12-04 01:30:47.349 +02:00 [INF] Executed action CAFFEINE.Controllers.HomeController.Search (CAFFEINE) in 0.6352ms
+2022-12-04 01:30:47.349 +02:00 [INF] Executed endpoint 'CAFFEINE.Controllers.HomeController.Search (CAFFEINE)'
+2022-12-04 01:30:47.349 +02:00 [INF] Response:
+StatusCode: 302
+Location: /?creator=Creator
+2022-12-04 01:30:47.349 +02:00 [INF] Request finished HTTP/2 POST https://localhost:5001/Home/Search application/x-www-form-urlencoded 250 - 302 0 - 2.8905ms
+2022-12-04 01:30:47.354 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5001/?creator=Creator - -
+2022-12-04 01:30:47.356 +02:00 [INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Host: localhost:5001
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.62
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9,ro;q=0.8,hu;q=0.7,de;q=0.6
+Cache-Control: max-age=0
+Cookie: [Redacted]
+Referer: [Redacted]
+Upgrade-Insecure-Requests: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-user: [Redacted]
+sec-fetch-dest: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+2022-12-04 01:30:47.356 +02:00 [INF] Executing endpoint 'CAFFEINE.Controllers.HomeController.Index (CAFFEINE)'
+2022-12-04 01:30:47.356 +02:00 [INF] Route matched with {action = "Index", controller = "Home", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(System.String, System.String) on controller CAFFEINE.Controllers.HomeController (CAFFEINE).
+2022-12-04 01:30:47.356 +02:00 [INF] 04/12/2022 01:30:47 test2@test.com CAFFEINE.Controllers.HomeController.Index
+2022-12-04 01:30:47.356 +02:00 [INF] Entity Framework Core 3.1.25 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2022-12-04 01:30:47.359 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__ToLower_0='?' (Size = 4000), @__ToLower_1='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[DB_ID], [c].[Creator], [c].[Day], [c].[Hour], [c].[Minute], [c].[Month], [c].[Year], [c].[gifContent], [c].[originalContent], [c0].[DB_ID], [c0].[CaffDB_ID], [c0].[Caption], [c0].[Duration], [c0].[Height], [c0].[Pixels], [c0].[Width]
+FROM [Caffs] AS [c]
+LEFT JOIN [Ciffs] AS [c0] ON [c].[DB_ID] = [c0].[CaffDB_ID]
+WHERE ((@__ToLower_0 = N'') OR (CHARINDEX(@__ToLower_0, LOWER([c].[Creator])) > 0)) AND EXISTS (
+    SELECT 1
+    FROM [Ciffs] AS [c1]
+    WHERE ([c].[DB_ID] = [c1].[CaffDB_ID]) AND ((@__ToLower_1 = N'') OR (CHARINDEX(@__ToLower_1, LOWER([c1].[Caption])) > 0)))
+ORDER BY [c].[DB_ID], [c0].[DB_ID]
+2022-12-04 01:30:47.662 +02:00 [INF] Executing ViewResult, running view Index.
+2022-12-04 01:30:47.710 +02:00 [INF] Executed ViewResult - view Index executed in 47.5305ms.
+2022-12-04 01:30:47.710 +02:00 [INF] Executed action CAFFEINE.Controllers.HomeController.Index (CAFFEINE) in 353.9921ms
+2022-12-04 01:30:47.710 +02:00 [INF] Executed endpoint 'CAFFEINE.Controllers.HomeController.Index (CAFFEINE)'
+2022-12-04 01:30:47.710 +02:00 [INF] Response:
+StatusCode: 200
+Content-Type: text/html; charset=utf-8
+Cache-Control: [Redacted]
+Pragma: [Redacted]
+2022-12-04 01:30:48.254 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5001/?creator=Creator - - - 200 - text/html;+charset=utf-8 899.6776ms
+2022-12-04 01:30:48.310 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5001/bootstrap/js/bootstrap.min.js - -
+2022-12-04 01:30:48.311 +02:00 [INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /bootstrap/js/bootstrap.min.js
+Accept: */*
+Host: localhost:5001
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.62
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9,ro;q=0.8,hu;q=0.7,de;q=0.6
+Cookie: [Redacted]
+Referer: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+2022-12-04 01:30:48.311 +02:00 [INF] Response:
+StatusCode: 404
+2022-12-04 01:30:48.311 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5001/bootstrap/js/bootstrap.min.js - - - 404 0 - 0.7355ms
+2022-12-04 01:30:48.345 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_framework/aspnetcore-browser-refresh.js - -
+2022-12-04 01:30:48.346 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_vs/browserLink - -
+2022-12-04 01:30:48.346 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 0.8112ms
+2022-12-04 01:30:48.356 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 10.0619ms
+2022-12-04 01:31:44.261 +02:00 [INF] Entity Framework Core 3.1.25 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2022-12-04 01:31:45.422 +02:00 [INF] Executed DbCommand (48ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2022-12-04 01:31:45.492 +02:00 [INF] Executed DbCommand (35ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2022-12-04 01:31:45.495 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2022-12-04 01:31:45.496 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2022-12-04 01:31:45.514 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2022-12-04 01:31:45.565 +02:00 [INF] No migrations were applied. The database is already up to date.
+2022-12-04 01:31:45.632 +02:00 [INF] User profile is available. Using 'C:\Users\tamas\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-12-04 01:31:45.806 +02:00 [INF] Entity Framework Core 3.1.25 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2022-12-04 01:31:46.504 +02:00 [INF] Executed DbCommand (105ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2022-12-04 01:31:46.621 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2022-12-04 01:31:47.064 +02:00 [INF] Now listening on: https://localhost:5001
+2022-12-04 01:31:47.064 +02:00 [INF] Now listening on: http://localhost:5000
+2022-12-04 01:31:47.069 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-12-04 01:31:47.069 +02:00 [INF] Hosting environment: Development
+2022-12-04 01:31:47.069 +02:00 [INF] Content root path: C:\Users\tamas\source\repos\Caffeine
+2022-12-04 01:31:47.902 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5001/ - -
+2022-12-04 01:31:48.111 +02:00 [INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Host: localhost:5001
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.62
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9,ro;q=0.8,hu;q=0.7,de;q=0.6
+Cookie: [Redacted]
+Upgrade-Insecure-Requests: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-user: [Redacted]
+sec-fetch-dest: [Redacted]
+2022-12-04 01:31:48.180 +02:00 [INF] Executing endpoint 'CAFFEINE.Controllers.HomeController.Index (CAFFEINE)'
+2022-12-04 01:31:48.236 +02:00 [INF] Route matched with {action = "Index", controller = "Home", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(System.String, System.String) on controller CAFFEINE.Controllers.HomeController (CAFFEINE).
+2022-12-04 01:31:48.270 +02:00 [INF] 04/12/2022 01:31:48 test2@test.com CAFFEINE.Controllers.HomeController.Index
+2022-12-04 01:31:48.330 +02:00 [INF] Entity Framework Core 3.1.25 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2022-12-04 01:31:48.563 +02:00 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[DB_ID], [c].[gifContent], [c].[Creator], [c].[Day], [c].[Hour], [c].[Minute], [c].[Month], [c].[Year], [t0].[DB_ID], [t0].[CaffDB_ID], [t0].[Caption], [t0].[Duration], [t0].[Height], [t0].[Pixels], [t0].[Width], [t0].[DB_ID0], [t0].[CiffDB_ID], [t0].[Text], [c1].[DB_ID], [c1].[CaffDB_ID], [c1].[Creator], [c1].[DT_Created], [c1].[Text]
+FROM [Caffs] AS [c]
+LEFT JOIN (
+    SELECT [c0].[DB_ID], [c0].[CaffDB_ID], [c0].[Caption], [c0].[Duration], [c0].[Height], [c0].[Pixels], [c0].[Width], [t].[DB_ID] AS [DB_ID0], [t].[CiffDB_ID], [t].[Text]
+    FROM [Ciffs] AS [c0]
+    LEFT JOIN [Tags] AS [t] ON [c0].[DB_ID] = [t].[CiffDB_ID]
+) AS [t0] ON [c].[DB_ID] = [t0].[CaffDB_ID]
+LEFT JOIN [Comments] AS [c1] ON [c].[DB_ID] = [c1].[CaffDB_ID]
+ORDER BY [c].[DB_ID], [t0].[DB_ID], [t0].[DB_ID0], [c1].[DB_ID]
+2022-12-04 01:31:48.862 +02:00 [INF] Executing ViewResult, running view Index.
+2022-12-04 01:31:49.334 +02:00 [INF] Executed ViewResult - view Index executed in 469.009ms.
+2022-12-04 01:31:49.346 +02:00 [INF] Executed action CAFFEINE.Controllers.HomeController.Index (CAFFEINE) in 1109.3257ms
+2022-12-04 01:31:49.347 +02:00 [INF] Executed endpoint 'CAFFEINE.Controllers.HomeController.Index (CAFFEINE)'
+2022-12-04 01:31:49.351 +02:00 [INF] Response:
+StatusCode: 200
+Content-Type: text/html; charset=utf-8
+Cache-Control: [Redacted]
+Pragma: [Redacted]
+2022-12-04 01:31:50.553 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5001/ - - - 200 - text/html;+charset=utf-8 2664.5362ms
+2022-12-04 01:31:50.741 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_framework/aspnetcore-browser-refresh.js - -
+2022-12-04 01:31:50.741 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5001/bootstrap/js/bootstrap.min.js - -
+2022-12-04 01:31:50.741 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_vs/browserLink - -
+2022-12-04 01:31:50.747 +02:00 [INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /bootstrap/js/bootstrap.min.js
+Accept: */*
+Host: localhost:5001
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.62
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9,ro;q=0.8,hu;q=0.7,de;q=0.6
+Cookie: [Redacted]
+Referer: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+2022-12-04 01:31:50.750 +02:00 [INF] Response:
+StatusCode: 404
+2022-12-04 01:31:50.751 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5001/bootstrap/js/bootstrap.min.js - - - 404 0 - 9.6419ms
+2022-12-04 01:31:50.752 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_framework/aspnetcore-browser-refresh.js - - - 200 11986 application/javascript;+charset=utf-8 10.6219ms
+2022-12-04 01:31:50.795 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 53.7259ms
+2022-12-04 01:31:52.568 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5001/Home/UploadGet - -
+2022-12-04 01:31:52.570 +02:00 [INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /Home/UploadGet
+Accept: */*
+Host: localhost:5001
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.62
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9,ro;q=0.8,hu;q=0.7,de;q=0.6
+Cookie: [Redacted]
+Referer: [Redacted]
+sec-ch-ua: [Redacted]
+X-Requested-With: XMLHttpRequest
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+2022-12-04 01:31:52.588 +02:00 [INF] Executing endpoint 'CAFFEINE.Controllers.HomeController.UploadGet (CAFFEINE)'
+2022-12-04 01:31:52.593 +02:00 [INF] Route matched with {action = "UploadGet", controller = "Home", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UploadGet() on controller CAFFEINE.Controllers.HomeController (CAFFEINE).
+2022-12-04 01:31:52.594 +02:00 [INF] 04/12/2022 01:31:52 test2@test.com CAFFEINE.Controllers.HomeController.MoveNext
+2022-12-04 01:31:52.597 +02:00 [INF] Executing PartialViewResult, running view ~/Views/Home/PartialViews/Upload.cshtml.
+2022-12-04 01:31:52.606 +02:00 [INF] Executed PartialViewResult - view ~/Views/Home/PartialViews/Upload.cshtml executed in 8.9572ms.
+2022-12-04 01:31:52.606 +02:00 [INF] Executed action CAFFEINE.Controllers.HomeController.UploadGet (CAFFEINE) in 13.2915ms
+2022-12-04 01:31:52.606 +02:00 [INF] Executed endpoint 'CAFFEINE.Controllers.HomeController.UploadGet (CAFFEINE)'
+2022-12-04 01:31:52.606 +02:00 [INF] Response:
+StatusCode: 200
+Content-Type: text/html; charset=utf-8
+Date: Sat, 03 Dec 2022 23:31:51 GMT
+Server: Kestrel
+Cache-Control: [Redacted]
+Pragma: [Redacted]
+2022-12-04 01:31:52.606 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5001/Home/UploadGet - - - 200 - text/html;+charset=utf-8 38.2951ms
+2022-12-04 01:31:56.148 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5001/Home/Download?id=7 - -
+2022-12-04 01:31:56.154 +02:00 [INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /Home/Download
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Host: localhost:5001
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.62
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9,ro;q=0.8,hu;q=0.7,de;q=0.6
+Cookie: [Redacted]
+Referer: [Redacted]
+Upgrade-Insecure-Requests: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-user: [Redacted]
+sec-fetch-dest: [Redacted]
+2022-12-04 01:31:56.154 +02:00 [INF] Executing endpoint 'CAFFEINE.Controllers.HomeController.Download (CAFFEINE)'
+2022-12-04 01:31:56.158 +02:00 [INF] Route matched with {action = "Download", controller = "Home", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Download(Int32) on controller CAFFEINE.Controllers.HomeController (CAFFEINE).
+2022-12-04 01:31:56.177 +02:00 [INF] 04/12/2022 01:31:56 test2@test.com CAFFEINE.Controllers.HomeController.MoveNext
+2022-12-04 01:31:56.179 +02:00 [INF] Entity Framework Core 3.1.25 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2022-12-04 01:31:56.225 +02:00 [INF] Executed DbCommand (6ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[DB_ID], [t].[Creator], [t].[Day], [t].[Hour], [t].[Minute], [t].[Month], [t].[Year], [t].[gifContent], [t].[originalContent], [c0].[DB_ID], [c0].[CaffDB_ID], [c0].[Creator], [c0].[DT_Created], [c0].[Text], [t1].[DB_ID], [t1].[CaffDB_ID], [t1].[Caption], [t1].[Duration], [t1].[Height], [t1].[Pixels], [t1].[Width], [t1].[DB_ID0], [t1].[CiffDB_ID], [t1].[Text]
+FROM (
+    SELECT TOP(1) [c].[DB_ID], [c].[Creator], [c].[Day], [c].[Hour], [c].[Minute], [c].[Month], [c].[Year], [c].[gifContent], [c].[originalContent]
+    FROM [Caffs] AS [c]
+    WHERE [c].[DB_ID] = @__id_0
+) AS [t]
+LEFT JOIN [Comments] AS [c0] ON [t].[DB_ID] = [c0].[CaffDB_ID]
+LEFT JOIN (
+    SELECT [c1].[DB_ID], [c1].[CaffDB_ID], [c1].[Caption], [c1].[Duration], [c1].[Height], [c1].[Pixels], [c1].[Width], [t0].[DB_ID] AS [DB_ID0], [t0].[CiffDB_ID], [t0].[Text]
+    FROM [Ciffs] AS [c1]
+    LEFT JOIN [Tags] AS [t0] ON [c1].[DB_ID] = [t0].[CiffDB_ID]
+) AS [t1] ON [t].[DB_ID] = [t1].[CaffDB_ID]
+ORDER BY [t].[DB_ID], [c0].[DB_ID], [t1].[DB_ID], [t1].[DB_ID0]
+2022-12-04 01:31:56.393 +02:00 [INF] Executing FileStreamResult, sending file with download name 'Test Creator.caff' ...
+2022-12-04 01:31:56.443 +02:00 [INF] Executed action CAFFEINE.Controllers.HomeController.Download (CAFFEINE) in 284.3391ms
+2022-12-04 01:31:56.443 +02:00 [INF] Executed endpoint 'CAFFEINE.Controllers.HomeController.Download (CAFFEINE)'
+2022-12-04 01:31:56.443 +02:00 [INF] Response:
+StatusCode: 200
+Content-Type: text/plain
+Date: Sat, 03 Dec 2022 23:31:56 GMT
+Server: Kestrel
+Content-Length: 4002260
+Content-Disposition: attachment; filename="Test Creator.caff"; filename*=UTF-8''Test%20Creator.caff
+2022-12-04 01:31:56.443 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5001/Home/Download?id=7 - - - 200 4002260 text/plain 295.4175ms

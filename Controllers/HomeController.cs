@@ -20,6 +20,8 @@ using Microsoft.AspNetCore.Http;
 using AnimatedGif;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using Serilog.Extensions.Logging;
+using Serilog;
 
 namespace CAFFEINE.Controllers
 {
@@ -27,39 +29,45 @@ namespace CAFFEINE.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly CaffService _caffService;
+        protected IAuthorizationService AuthorizationService { get; }
         private readonly CaffRepository _caffRepository;
-        private readonly RoleManager<IdentityRole> _roleManager;
-        public HomeController(ILogger<HomeController> logger, CaffService caffService, CaffRepository caffrepository, RoleManager<IdentityRole> roleManager)
+        public HomeController(ILogger<HomeController> logger, CaffService caffService, CaffRepository caffrepository, IAuthorizationService authorizationService)
         {
             _logger = logger;
             _caffService = caffService;
             _caffRepository = caffrepository;
-            _roleManager = roleManager;
-
+            AuthorizationService = authorizationService;
         }
 
-        public IActionResult Index(string creator = "", string caption = "")
+        public async Task<IActionResult> Index(string creator = "", string caption = "")
         {
-
-            if (string.IsNullOrEmpty(creator) && string.IsNullOrEmpty(caption))
+            Log.Information(DateTime.Now.ToString() + " " + User.Identity.Name + " " + this.GetType().FullName + "." + ControllerContext.ActionDescriptor.ActionName);
+            if ((await AuthorizationService.AuthorizeAsync(User, "Member")).Succeeded)
             {
-                var caffs = _caffRepository.GetAllCaff();
-                return View(new IndexVM()
+                if (string.IsNullOrEmpty(creator) && string.IsNullOrEmpty(caption))
                 {
-                    creator = creator,
-                    caption = caption,
-                    caffs = caffs
-                });
+                    var caffs = _caffRepository.GetAllCaff();
+                    return View(new IndexVM()
+                    {
+                        creator = creator,
+                        caption = caption,
+                        caffs = caffs
+                    });
+                }
+                else
+                {
+                    List<Caff> caffsFiltered = _caffRepository.GetCaffsByFilter(creator, caption);
+                    return View(new IndexVM()
+                    {
+                        creator = creator,
+                        caption = caption,
+                        caffs = caffsFiltered
+                    });
+                }
             }
             else
             {
-                List<Caff> caffsFiltered = _caffRepository.GetCaffsByFilter(creator, caption);
-                return View(new IndexVM()
-                {
-                    creator = creator,
-                    caption = caption,
-                    caffs = caffsFiltered
-                });
+                return View();
             }
         }
 
@@ -67,184 +75,307 @@ namespace CAFFEINE.Controllers
 
 
         [HttpGet]
-        [Authorize(Roles = "Member")]
-        public IActionResult Comment(int id)
+        public async Task<IActionResult> Comment(int id)
         {
-            if (_caffRepository.GetCaffFromId(id) != null)
+            Log.Information(DateTime.Now.ToString() + " " + User.Identity.Name + " " + this.GetType().FullName + "." + System.Reflection.MethodBase.GetCurrentMethod().Name);
+            if ((await AuthorizationService.AuthorizeAsync(User, "Member")).Succeeded)
             {
-                return PartialView("~/Views/Home/PartialViews/AddComment.cshtml", new AddCommentVM() { CaffId = id });
-            }
-            else
-            {
-                return BadRequest();
-            }
-        }
-
-        [HttpGet]
-        [Authorize(Roles = "Member")]
-        public IActionResult Details(int id)
-        {
-            var caff = _caffRepository.GetCaffFromId(id);
-            if (caff != null && caff.Ciffs != null)
-            {
-                return PartialView(
-                    "~/Views/Home/PartialViews/Details.cshtml",
-                    new DetailsVM() {
-                        Comments = _caffRepository.GetAllCommentToCaff(id),
-                        CaffCreator = caff.Creator,
-                        Caption = caff.Ciffs[0].Caption,
-                        Tags = caff.Ciffs[0].Tags }
-                    );
-            }
-            else
-            {
-                return BadRequest();
-            }
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Member")]
-        public IActionResult Comment(AddCommentVM addCommentVM)
-        {
-            if (_caffRepository.GetCaffFromId(addCommentVM.CaffId) != null)
-            {
-                var user = User.Identity.Name;
-                _caffRepository.AddCommentToCaff(addCommentVM.CaffId, user, addCommentVM.Text);
-                return Json(new { success = true });
-            }
-            else
-            {
-                return BadRequest();
-            }
-        }
-
-        [HttpGet]
-        [Authorize(Roles = "Admin")]
-        public IActionResult Delete(int id)
-        {
-            var caff = _caffRepository.GetCaffFromId(id);
-            if (caff != null && caff.Ciffs != null)
-            {
-                return PartialView("~/Views/Home/PartialViews/Delete.cshtml", new DeleteVM() { CaffId = id });
-            }
-            else
-            {
-                return BadRequest();
-            }
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Delete(DeleteVM deleteVM)
-        {
-            if (_caffRepository.GetCaffFromId(deleteVM.CaffId) != null)
-            {
-                _caffRepository.DeleteCaff(deleteVM.CaffId);
-                return Json(new { success = true });
-            }
-            else
-            {
-                return BadRequest();
-            }
-        }
-
-        [HttpGet]
-        public FileResult Download(int id)
-        {
-            Caff rec = _caffRepository.GetCaffFromId(id);
-
-            var stream = new MemoryStream(rec.originalContent);
-            return new FileStreamResult(stream, new MediaTypeHeaderValue("text/plain"))
-            {
-                FileDownloadName = $"{rec.Creator}.caff"
-            };
-        }
-
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Upload()
-        {
-            if (this.Request.Form.Files.Count == 0)
-            {
-                return BadRequest();
-            }
-            IFormFile httpPostedFile = this.Request.Form.Files[0];
-            BinaryReader b = new BinaryReader(httpPostedFile.OpenReadStream());
-            byte[] binData = b.ReadBytes((int)httpPostedFile.Length);
-
-
-            Caff caff = new Caff()
-            {
-                originalContent = binData
-            };
-            var CaffResult = Parsing.CaffProcessor.ParseCaff(binData, User.Identity.Name);
-            caff.Year = CaffResult.Year;
-            caff.Hour = CaffResult.Hour;
-            caff.Creator = CaffResult.Creator;
-            caff.Day = CaffResult.Day;
-            caff.Month = CaffResult.Month;
-            caff.Minute = CaffResult.Minute;
-            caff.Ciffs = new List<Ciff>();
-
-            using (var gif = AnimatedGif.AnimatedGif.Create($"{caff.Creator}.gif", 33))
-            {
-                for (int i = 0; i < CaffResult.Ciffs.Count; i++)
+                if (_caffRepository.GetCaffFromId(id) != null)
                 {
-                    List<Tag> tags = CaffResult.Ciffs[i].Tags.Select(x => new Tag() { Text = x }).ToList();
-                    byte[] currentFile = System.IO.File.ReadAllBytes(@$"{User.Identity.Name}\{i + 1}.bmp");
-                    System.IO.File.Delete(@$"{User.Identity.Name}\{i + 1}.bmp");
-
-                    var img = Image.FromStream(new MemoryStream(currentFile));
-                    gif.AddFrame(img, CaffResult.Ciffs[i].Duration);
-
-                    caff.Ciffs.Add(new Ciff()
-                    {
-                        Caption = CaffResult.Ciffs[i].Caption,
-                        Tags = tags
-                    });
+                    return PartialView("~/Views/Home/PartialViews/AddComment.cshtml", new AddCommentVM() { CaffId = id });
+                }
+                else
+                {
+                    Log.Error(DateTime.Now.ToString() + " " + User.Identity.Name + " " + this.GetType().FullName + "." + System.Reflection.MethodBase.GetCurrentMethod().Name);
+                    return BadRequest();
                 }
             }
-            byte[] gifByte = System.IO.File.ReadAllBytes(@$"{caff.Creator}.gif");
-            System.IO.File.Delete(@$"{caff.Creator}.gif");
-            caff.gifContent = gifByte;
+            else
+            {
+                Log.Error(DateTime.Now.ToString() + " " + User.Identity.Name + " " + this.GetType().FullName + "." + System.Reflection.MethodBase.GetCurrentMethod().Name);
+                return Unauthorized();
+            }
+        }
 
-            _caffRepository.SaveCaff(caff);
-            return Json(new { success = true });
+        [HttpGet]
+        public async Task <IActionResult> Details(int id)
+        {
+            Log.Information(DateTime.Now.ToString() + " " + User.Identity.Name + " " + this.GetType().FullName + "." + System.Reflection.MethodBase.GetCurrentMethod().Name);
+            if ((await AuthorizationService.AuthorizeAsync(User, "Member")).Succeeded)
+            {
+                var caff = _caffRepository.GetCaffFromId(id);
+                if (caff != null && caff.Ciffs != null)
+                {
+                    return PartialView(
+                        "~/Views/Home/PartialViews/Details.cshtml",
+                        new DetailsVM()
+                        {
+                            Comments = _caffRepository.GetAllCommentToCaff(id),
+                            CaffCreator = caff.Creator,
+                            Caption = caff.Ciffs[0].Caption,
+                            Tags = caff.Ciffs[0].Tags
+                        }
+                        );
+                }
+                else
+                {
+                    Log.Error(DateTime.Now.ToString() + " " + User.Identity.Name + " " + this.GetType().FullName + "." + System.Reflection.MethodBase.GetCurrentMethod().Name);
+                    return BadRequest();
+                }
+            }
+            else
+            {
+                Log.Error(DateTime.Now.ToString() + " " + User.Identity.Name + " " + this.GetType().FullName + "." + System.Reflection.MethodBase.GetCurrentMethod().Name);
+                return Unauthorized();
+            }
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task <IActionResult> Comment(AddCommentVM addCommentVM)
+        {
+            Log.Information(DateTime.Now.ToString() + " " + User.Identity.Name + " " + this.GetType().FullName + "." + System.Reflection.MethodBase.GetCurrentMethod().Name);
+            if ((await AuthorizationService.AuthorizeAsync(User, "Member")).Succeeded)
+            {
+                if (_caffRepository.GetCaffFromId(addCommentVM.CaffId) != null)
+                {
+                    var user = User.Identity.Name;
+                    _caffRepository.AddCommentToCaff(addCommentVM.CaffId, user, addCommentVM.Text);
+                    return Json(new { success = true });
+                }
+                else
+                {
+                    Log.Error(DateTime.Now.ToString() + " " + User.Identity.Name + " " + this.GetType().FullName + "." + System.Reflection.MethodBase.GetCurrentMethod().Name);
+                    return BadRequest();
+                }
+            }
+            else
+            {
+                Log.Error(DateTime.Now.ToString() + " " + User.Identity.Name + " " + this.GetType().FullName + "." + System.Reflection.MethodBase.GetCurrentMethod().Name);
+                return Unauthorized();
+            }
+        }
+
+        [HttpGet]
+        public async Task <IActionResult> Delete(int id)
+        {
+            Log.Information(DateTime.Now.ToString() + " " + User.Identity.Name + " " + this.GetType().FullName + "." + System.Reflection.MethodBase.GetCurrentMethod().Name);
+            if ((await AuthorizationService.AuthorizeAsync(User, "Admin")).Succeeded)
+            {
+                var caff = _caffRepository.GetCaffFromId(id);
+                if (caff != null && caff.Ciffs != null)
+                {
+                    return PartialView("~/Views/Home/PartialViews/Delete.cshtml", new DeleteVM() { CaffId = id });
+                }
+                else
+                {
+                    Log.Error(DateTime.Now.ToString() + " " + User.Identity.Name + " " + this.GetType().FullName + "." + System.Reflection.MethodBase.GetCurrentMethod().Name);
+                    return BadRequest();
+                }
+            }
+            else
+            {
+                Log.Error(DateTime.Now.ToString() + " " + User.Identity.Name + " " + this.GetType().FullName + "." + System.Reflection.MethodBase.GetCurrentMethod().Name);
+                return Unauthorized();
+            }
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Delete(DeleteVM deleteVM)
+        {
+            Log.Information(DateTime.Now.ToString() + " " + User.Identity.Name + " " + this.GetType().FullName + "." + System.Reflection.MethodBase.GetCurrentMethod().Name);
+            if ((await AuthorizationService.AuthorizeAsync(User, "Admin")).Succeeded)
+            {
+                if (_caffRepository.GetCaffFromId(deleteVM.CaffId) != null)
+                {
+                    _caffRepository.DeleteCaff(deleteVM.CaffId);
+                    return Json(new { success = true });
+                }
+                else
+                {
+                    Log.Error(DateTime.Now.ToString() + " " + User.Identity.Name + " " + this.GetType().FullName + "." + System.Reflection.MethodBase.GetCurrentMethod().Name);
+                    return BadRequest();
+                }
+            }
+            else
+            {
+                Log.Error(DateTime.Now.ToString() + " " + User.Identity.Name + " " + this.GetType().FullName + "." + System.Reflection.MethodBase.GetCurrentMethod().Name);
+                return Unauthorized();
+            }
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Download(int id)
+        {
+            Log.Information(DateTime.Now.ToString() + " " + User.Identity.Name + " " + this.GetType().FullName + "." + System.Reflection.MethodBase.GetCurrentMethod().Name);
+            if ((await AuthorizationService.AuthorizeAsync(User, "Member")).Succeeded)
+            {
+                Caff rec = _caffRepository.GetCaffFromId(id);
+
+                var stream = new MemoryStream(rec.originalContent);
+                return new FileStreamResult(stream, new MediaTypeHeaderValue("text/plain"))
+                {
+                    FileDownloadName = $"{rec.Creator}.caff"
+                };
+            }
+            else
+            {
+                Log.Error(DateTime.Now.ToString() + " " + User.Identity.Name + " " + this.GetType().FullName + "." + System.Reflection.MethodBase.GetCurrentMethod().Name);
+                return Unauthorized();
+            }
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Upload()
+        {
+            Log.Information(DateTime.Now.ToString() + " " + User.Identity.Name + " " + this.GetType().FullName + "." + System.Reflection.MethodBase.GetCurrentMethod().Name);
+            if ((await AuthorizationService.AuthorizeAsync(User, "Member")).Succeeded)
+            {
+                if (this.Request.Form.Files.Count == 0)
+                {
+                    Log.Error(DateTime.Now.ToString() + " " + User.Identity.Name + " " + this.GetType().FullName + "." + System.Reflection.MethodBase.GetCurrentMethod().Name);
+                    return BadRequest();
+                }
+                IFormFile httpPostedFile = this.Request.Form.Files[0];
+                if(".caff" != Path.GetExtension(httpPostedFile.FileName))
+                {
+                    Log.Error(DateTime.Now.ToString() + " " + User.Identity.Name + " " + this.GetType().FullName + "." + System.Reflection.MethodBase.GetCurrentMethod().Name);
+                    return BadRequest();
+                }
+                if(httpPostedFile.Length > 15000000)
+                {
+                    Log.Error(DateTime.Now.ToString() + " " + User.Identity.Name + " " + this.GetType().FullName + "." + System.Reflection.MethodBase.GetCurrentMethod().Name);
+                    return BadRequest();
+                }
+                BinaryReader b = new BinaryReader(httpPostedFile.OpenReadStream());
+                byte[] binData = b.ReadBytes((int)httpPostedFile.Length);
+
+
+                Caff caff = new Caff()
+                {
+                    originalContent = binData
+                };
+                Parsing.CaffResult CaffResult;
+                try
+                {
+                    CaffResult = Parsing.CaffProcessor.ParseCaff(binData, User.Identity.Name);
+                }
+                catch(Exception e)
+                {
+                    Log.Error(DateTime.Now.ToString() + " " + User.Identity.Name + " " + this.GetType().FullName + "." + System.Reflection.MethodBase.GetCurrentMethod().Name);
+                    return BadRequest();
+                }
+                caff.Year = CaffResult.Year;
+                caff.Hour = CaffResult.Hour;
+                caff.Creator = CaffResult.Creator;
+                caff.Day = CaffResult.Day;
+                caff.Month = CaffResult.Month;
+                caff.Minute = CaffResult.Minute;
+                caff.Ciffs = new List<Ciff>();
+
+                using (var gif = AnimatedGif.AnimatedGif.Create($"{caff.Creator}.gif", 33))
+                {
+                    for (int i = 0; i < CaffResult.Ciffs.Count; i++)
+                    {
+                        List<Tag> tags = CaffResult.Ciffs[i].Tags.Select(x => new Tag() { Text = x }).ToList();
+                        byte[] currentFile = System.IO.File.ReadAllBytes(@$"{User.Identity.Name}\{i + 1}.bmp");
+                        System.IO.File.Delete(@$"{User.Identity.Name}\{i + 1}.bmp");
+
+                        var img = Image.FromStream(new MemoryStream(currentFile));
+                        gif.AddFrame(img, CaffResult.Ciffs[i].Duration);
+
+                        caff.Ciffs.Add(new Ciff()
+                        {
+                            Caption = CaffResult.Ciffs[i].Caption,
+                            Tags = tags
+                        });
+                    }
+                }
+                byte[] gifByte = System.IO.File.ReadAllBytes(@$"{caff.Creator}.gif");
+                System.IO.File.Delete(@$"{caff.Creator}.gif");
+                caff.gifContent = gifByte;
+
+                _caffRepository.SaveCaff(caff);
+                return Json(new { success = true });
+            }
+            else
+            {
+                Log.Error(DateTime.Now.ToString() + " " + User.Identity.Name + " " + this.GetType().FullName + "." + System.Reflection.MethodBase.GetCurrentMethod().Name);
+                return Unauthorized();
+            }
         }
 
 
 
         [HttpGet]
-        public IActionResult UploadGet()
+        public async Task<IActionResult> UploadGet()
         {
-            return PartialView("~/Views/Home/PartialViews/Upload.cshtml");
+            Log.Information(DateTime.Now.ToString() + " " + User.Identity.Name + " " + this.GetType().FullName + "." + System.Reflection.MethodBase.GetCurrentMethod().Name);
+            if ((await AuthorizationService.AuthorizeAsync(User, "Member")).Succeeded)
+            {
+                return PartialView("~/Views/Home/PartialViews/Upload.cshtml");
+            }
+            else
+            {
+                Log.Error(DateTime.Now.ToString() + " " + User.Identity.Name + " " + this.GetType().FullName + "." + System.Reflection.MethodBase.GetCurrentMethod().Name);
+                return Unauthorized();
+            }
         }
 
 
         [HttpPost]
-        public IActionResult Search()
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Search()
         {
-            var creator = this.Request.Form["Creator"].ToString();
-            var caption = this.Request.Form["Caption"].ToString();
-            return RedirectToAction("Index", "Home", new { creator = creator, caption = caption });
+            Log.Information(DateTime.Now.ToString() + " " + User.Identity.Name + " " + this.GetType().FullName + "." + System.Reflection.MethodBase.GetCurrentMethod().Name);
+            if ((await AuthorizationService.AuthorizeAsync(User, "Member")).Succeeded)
+            {
+                var creator = this.Request.Form["Creator"].ToString();
+                var caption = this.Request.Form["Caption"].ToString();
+                return RedirectToAction("Index", "Home", new { creator = creator, caption = caption });
+            }
+            else
+            {
+                Log.Error(DateTime.Now.ToString() + " " + User.Identity.Name + " " + this.GetType().FullName + "." + System.Reflection.MethodBase.GetCurrentMethod().Name);
+                return Unauthorized();
+            }
         }
 
 
         [HttpGet]
         public async Task<IActionResult> Users()
         {
-            List<UserData> users = await _caffRepository.GetUsers();
-            return View(users);
+            Log.Information(DateTime.Now.ToString() + " " + User.Identity.Name + " " + this.GetType().FullName + "." + System.Reflection.MethodBase.GetCurrentMethod().Name);
+            if ((await AuthorizationService.AuthorizeAsync(User, "Admin")).Succeeded)
+            {
+                List<UserData> users = await _caffRepository.GetUsers();
+                return View(users);
+            }
+            else
+            {
+                Log.Error(DateTime.Now.ToString() + " " + User.Identity.Name + " " + this.GetType().FullName + "." + System.Reflection.MethodBase.GetCurrentMethod().Name);
+                return Unauthorized();
+            }
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> SaveUsers(List<UserData> users)
         {
-            await _caffRepository.UpdateUsers(users);
-            return RedirectToAction("Users", "Home");
+            Log.Information(DateTime.Now.ToString() + " " + User.Identity.Name + " " + this.GetType().FullName + "." + System.Reflection.MethodBase.GetCurrentMethod().Name);
+            if ((await AuthorizationService.AuthorizeAsync(User, "Admin")).Succeeded)
+            {
+                await _caffRepository.UpdateUsers(users);
+                return RedirectToAction("Users", "Home");
+            }
+            else
+            {
+                Log.Error(DateTime.Now.ToString() + " " + User.Identity.Name + " " + this.GetType().FullName + "." + System.Reflection.MethodBase.GetCurrentMethod().Name);
+                return Unauthorized();
+            }
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

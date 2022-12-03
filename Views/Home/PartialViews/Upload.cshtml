@@ -10,6 +10,7 @@
     @using (Html.AjaxBeginForm("Upload", "Home", new AjaxOptions
      {
          OnSuccess = "onSuccess",
+         OnFailure = "onFailure",
          HttpMethod = "Post"
      },
     new { enctype = "multipart/form-data" }
@@ -38,6 +39,11 @@
     function onSuccess() {
         $('#modal-placeholder > .modal').modal('hide');
         location.reload();
+    }
+
+    function onFailure() {
+        $('#modal-placeholder > .modal').modal('hide');
+        alert('Uploading failed');
     }
 
     $(document).ready(function () {
