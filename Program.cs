@@ -16,7 +16,7 @@ using System.Threading.Tasks;
 
 namespace CAFFEINE
 {
-    public class Program
+    public static class Program
     {
         public static void Main(string[] args)
         {
