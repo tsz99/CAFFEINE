@@ -11,12 +11,12 @@ namespace CAFFEINE.Repositories
 {
     public class CaffRepository
     {
-        private ApplicationDbContext _db;
-        UserManager<IdentityUser> userManager;
+        private readonly ApplicationDbContext _db;
+        private readonly UserManager<IdentityUser> userManager;
 
         public CaffRepository(ApplicationDbContext _context, UserManager<IdentityUser> userManager)
         {
-            _db = _context;
+            this._db = _context;
             this.userManager = userManager;
         }
 
