@@ -17,10 +17,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using CAFFEINE.Repositories;
 using Microsoft.Extensions.Options;
-using System.Data;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc.Authorization;
+using Microsoft.Extensions.Logging;
+using Serilog;
+using Serilog.Extensions.Logging;
 
 namespace CAFFEINE
 {
@@ -44,35 +43,23 @@ namespace CAFFEINE
                     .AddRoles<IdentityRole>()
                     .AddEntityFrameworkStores<ApplicationDbContext>()
                     .AddDefaultTokenProviders();
-            
             services.AddScoped<IUserClaimsPrincipalFactory<IdentityUser>, AdditionalUserClaimsPrincipalFactory>();
-            //builder.Services.AddSingleton<IAuthorizationHandler,
-            //          ContactAdministratorsAuthorizationHandler>();
-            //
-            //builder.Services.AddSingleton<IAuthorizationHandler,
-            //                      ContactManagerAuthorizationHandler>();
-            services.AddAuthorization(options =>
-            {
-                options.FallbackPolicy = new AuthorizationPolicyBuilder()
-                    .RequireAuthenticatedUser()
-                    .Build();
-            });
             services.AddAuthorization(options => options.AddPolicy("TwoFactorEnabled", x => x.RequireClaim("amr", "mfa")));
-            services.AddControllersWithViews(config =>
-            {
-                var policy = new AuthorizationPolicyBuilder()
-                                 .RequireAuthenticatedUser()
-                                 .Build();
-                config.Filters.Add(new AuthorizeFilter(policy));
-            });
+
+            services.AddAuthorization(options => options.AddPolicy("Admin", x => x.RequireClaim("Admin", "Admin")));
+            services.AddAuthorization(options => options.AddPolicy("Member", x => x.RequireClaim("Member", "Member")));
+            services.AddControllersWithViews();
+            services.AddLogging(x => x.AddSerilog(dispose: true));
             services.AddScoped<CaffService>();
             services.AddScoped<CaffRepository>();
             services.AddUnobtrusiveAjax(useCdn: true, injectScriptIfNeeded: false);
             services.AddRazorPages();
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IServiceProvider serviceProvider)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IServiceProvider serviceProvider, ILoggerFactory loggerFactory)
         {
             CreateRoles(serviceProvider).Wait();
             if (env.IsDevelopment())
@@ -90,7 +77,7 @@ namespace CAFFEINE
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            app.UseHttpLogging();
             app.UseAuthentication();
             app.UseAuthorization();
 
@@ -127,10 +114,8 @@ namespace CAFFEINE
                 UserName = Configuration["AppSettings:UserName"],
                 Email = Configuration["AppSettings:UserEmail"],
             };
-
             string userPWD = Configuration["AppSettings:UserPassword"];
             var _user = await UserManager.FindByEmailAsync(Configuration["AppSettings:AdminUserEmail"]);
-
             if (_user == null)
             {
                 var createPowerUser = await UserManager.CreateAsync(poweruser, userPWD);
@@ -138,9 +123,14 @@ namespace CAFFEINE
                 {
                     //here we tie the new user to the role : Question 3
                     await UserManager.AddToRoleAsync(poweruser, "Admin");
-
                 }
             }*/
         }
     }
 }
+
+
+
+
+
+

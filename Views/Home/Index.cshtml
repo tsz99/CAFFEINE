@@ -3,6 +3,7 @@
 @using CAFFEINE.ViewModels;
 @using Microsoft.AspNetCore.Authorization
 @using Microsoft.AspNetCore.Identity
+@inject IAuthorizationService AuthorizationService
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
 @{
@@ -12,65 +13,78 @@
 
 @if (User.Identity.IsAuthenticated)
 {
-    <div class="container">
-        <div id="modal-placeholder"></div>
+    @if ((AuthorizationService.AuthorizeAsync(User, "TwoFactorEnabled")).Result.Succeeded)
+    {
+        <div class="container">
+            <div id="modal-placeholder"></div>
 
-        <div class="row">
-            <section class="col-3">
-                <h4>Search for Caff</h4>
-                @using (Html.AjaxBeginForm("Search", "Home", new AjaxOptions
-             {
-                 OnSuccess = "onSuccess",
-                 HttpMethod = "Post"
-             }))
-                {
-                    <div class="form-floating mb-3 mt-3">
-                        <label for="floatingInput">Creator:</label>
-                        <input class="form-control" id="floatingInput" name="Creator" value="@Model.creator" placeholder="Creator">
-                    </div>
-                    <div class="form-floating mb-4">
-                        <label for="floatingInput">Caption:</label>
-                        <input class="form-control" id="floatingInput" name="Caption" value="@Model.caption" placeholder="Caption">
-                    </div>
-                    <button type="submit" class="btn btn-secondary mb-3 px-4">
-                        Search
-                    </button>
-                }
-            </section>
-            <section class="col-9">
-                <h1>Caffs</h1>
-
-                <p>
-                    <a href="#" id="UploadButton" class="btn btn-dark">Upload new Caff</a>
-                </p>
-
-             
-                <div class="row row-cols-2  g-3">
-                    @foreach (var item in Model.caffs)
+            <div class="row">
+                <section class="col-3">
+                    <h4>Search for Caff</h4>
+                    @using (Html.AjaxBeginForm("Search", "Home", new AjaxOptions
                     {
-                        <div class="col-6 my-3">
-                            <div class="card shadow-sm">
-                                <img src=@String.Format("data:image/gif;base64,{0}", Convert.ToBase64String(item.gifContent)) alt="gif">
-                                <div id="detailsButton_@item.DB_ID" class="card-body detailsButton">
-                                    <h5 class="card-title ">@item.Creator</h5>
-                                    <div class="card-text ">@item.Year.@item.Month.@item.Day @item.Hour:@item.Minute</div>
-                                </div>
-                                <div class="card-body w-100 pt-0">
-                                    <div class="btn-group row row-cols-3 w-100">
-                                        <div class="col-md-12 col-lg-5 p-1"><button type="button" id="addCommentButton_@item.DB_ID" class="btn btn-sm btn-outline-secondary addCommentButton w-100">Add Comment</button></div>
-                                        <div class="col-md-12 col-lg-3 p-1"><button type="button" id="deleteButton_@item.DB_ID" class="btn btn-sm btn-outline-secondary deleteButton w-100">Delete</button></div>
-                                        <div class="col-md-12 col-lg-4 p-1"><button type="button" id="downloadButton_@item.DB_ID" class="btn btn-sm btn-outline-secondary downloadButton w-100">Download</button></div>
+                        OnSuccess = "onSuccess",
+                        HttpMethod = "Post"
+                    }))
+                    {
+                        <div class="form-floating mb-3 mt-3">
+                            <label for="floatingInput">Creator:</label>
+                            <input class="form-control" id="floatingInput" name="Creator" value="@Model.creator" placeholder="Creator">
+                        </div>
+                        <div class="form-floating mb-4">
+                            <label for="floatingInput">Caption:</label>
+                            <input class="form-control" id="floatingInput" name="Caption" value="@Model.caption" placeholder="Caption">
+                        </div>
+                        <button type="submit" class="btn btn-info mb-3 px-4">
+                            Search
+                        </button>
+                    }
+                </section>
+                <section class="col-9">
+                    <h1>Caffs</h1>
+
+                    <p>
+                        <a href="#" id="UploadButton" class="btn btn-dark">Upload new Caff</a>
+                    </p>
+
+
+                    <div class="row row-cols-2  g-3">
+                        @foreach (var item in Model.caffs)
+                        {
+                            <div class="col-6 my-3">
+                                <div class="card shadow-sm">
+                                    <img src=@String.Format("data:image/gif;base64,{0}", Convert.ToBase64String(item.gifContent)) alt="gif">
+                                    <div id="detailsButton_@item.DB_ID" class="card-body detailsButton">
+                                        <h5 class="card-title ">@item.Creator</h5>
+                                        <div class="card-text ">@item.Year.@item.Month.@item.Day @item.Hour:@item.Minute</div>
+                                    </div>
+                                    <div class="card-body w-100 pt-0">
+                                        <div class="btn-group row row-cols-3 w-100">
+                                            <div class="col-md-12 col-lg-5 p-1"><button type="button" id="addCommentButton_@item.DB_ID" class="btn btn-sm btn-outline-secondary addCommentButton w-100">Add Comment</button></div>
+                                            @if ((AuthorizationService.AuthorizeAsync(User, "Admin")).Result.Succeeded)
+                                            {
+                                                <div class="col-md-12 col-lg-3 p-1"><button type="button" id="deleteButton_@item.DB_ID" class="btn btn-sm btn-outline-secondary deleteButton w-100">Delete</button></div>
+                                            }
+                                            <div class="col-md-12 col-lg-4 p-1"><button type="button" id="downloadButton_@item.DB_ID" class="btn btn-sm btn-outline-secondary downloadButton w-100">Download</button></div>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer">
                                     </div>
                                 </div>
-                                <div class="card-footer">
-                                </div>
                             </div>
-                        </div>
-                    }
-                </div>
-            </section>
+                        }
+                    </div>
+                </section>
+            </div>
         </div>
-    </div>
+    }
+    else
+    {
+        <div class="container">
+            <h1 class="display-4">Welcome</h1>
+            <p>To use the application please enable MFA.</p>
+        </div>
+    }
 }
 else
 {
