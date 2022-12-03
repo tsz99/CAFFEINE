@@ -24,10 +24,6 @@ namespace CAFFEINE
                 scope.ServiceProvider.GetRequiredService<ApplicationDbContext>().Database.Migrate();
             }
             Host.Run();
-
-           
-
-
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>

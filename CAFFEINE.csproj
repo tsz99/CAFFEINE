@@ -4,11 +4,10 @@
     <TargetFramework>net6.0-windows7.0</TargetFramework>
     <UserSecretsId>aspnet-CAFFEINE-8D5752D5-4605-4E0A-9100-3DF9FFAAEAB9</UserSecretsId>
     <Platforms>AnyCPU;x64</Platforms>
+    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
-
-  <ItemGroup>
-    <None Include="wwwroot\lib\caff.dll" />
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="AspNetCore.Unobtrusive.Ajax" Version="2.0.0" />

@@ -88,8 +88,6 @@ namespace CAFFEINE.Controllers
             {
                 return BadRequest();
             }
-
-
         }
 
         [HttpGet]
@@ -98,14 +96,19 @@ namespace CAFFEINE.Controllers
             var caff = _caffRepository.GetCaffFromId(id);
             if (caff != null && caff.Ciffs != null)
             {
-                return PartialView("~/Views/Home/PartialViews/Details.cshtml", new DetailsVM() { Comments = _caffRepository.GetAllCommentToCaff(id), CaffCreator = caff.Creator, Caption = caff.Ciffs[0].Caption, Tags = caff.Ciffs[0].Tags });
+                return PartialView(
+                    "~/Views/Home/PartialViews/Details.cshtml",
+                    new DetailsVM() {
+                        Comments = _caffRepository.GetAllCommentToCaff(id),
+                        CaffCreator = caff.Creator,
+                        Caption = caff.Ciffs[0].Caption,
+                        Tags = caff.Ciffs[0].Tags }
+                    );
             }
             else
             {
                 return BadRequest();
             }
-
-
         }
 
         [HttpPost]
@@ -136,8 +139,6 @@ namespace CAFFEINE.Controllers
             {
                 return BadRequest();
             }
-
-
         }
 
         [HttpPost]
