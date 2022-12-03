@@ -40,6 +40,17 @@ namespace CAFFEINE.Controllers
             if (string.IsNullOrEmpty(creator) && string.IsNullOrEmpty(caption))
             {
                 var caffs = _caffRepository.GetAllCaff();
+
+
+
+                foreach (var item in caffs)
+                {
+                    var gif = new AnimatedGif.AnimatedGifCreator(new MemoryStream(item.Ciffs[0].Pixels), item.Ciffs[0].Duration);
+                    for (int i = 1; i < item.Ciffs.Count; i++)
+                    {
+                        gif.AddFrame(Image.FromStream(new MemoryStream(item.Ciffs[i].Pixels)), item.Ciffs[0].Duration);
+                    }
+                }
                 return View(new IndexVM()
                 {
                     creator = creator,
@@ -57,6 +68,8 @@ namespace CAFFEINE.Controllers
                     caffs = caffsFiltered
                 });
             }
+
+
 
             /*  var caff = _caffService.ParseCaff();
               _caffRepository.SaveCaff(caff);*/
@@ -159,15 +172,11 @@ namespace CAFFEINE.Controllers
         public FileResult Download(int id)
         {
             Caff rec = _caffRepository.GetCaffFromId(id);
-            StringBuilder builder = new StringBuilder();
 
-            //TODO: giffé
-
-
-            var stream = new MemoryStream(Encoding.ASCII.GetBytes(""));
+            var stream = new MemoryStream(rec.originalContent);
             return new FileStreamResult(stream, new MediaTypeHeaderValue("text/plain"))
             {
-                FileDownloadName = $"{rec.Creator}.txt"
+                FileDownloadName = $"{rec.Creator}.caff"
             };
         }
 
@@ -176,17 +185,42 @@ namespace CAFFEINE.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Upload()
         {
+            if(this.Request.Form.Files.Count == 0)
+            {
+                return BadRequest();
+            }
             IFormFile httpPostedFile = this.Request.Form.Files[0];
             BinaryReader b = new BinaryReader(httpPostedFile.OpenReadStream());
             byte[] binData = b.ReadBytes((int)httpPostedFile.Length);
-            
 
-            Parsing.CaffProcessor.ParseCaff(binData, "caffs");
+
             Caff caff = new Caff()
             {
-                originalContent = binData,
-                Creator = User.Identity.Name
+                originalContent = binData
             };
+            var CaffResult = Parsing.CaffProcessor.ParseCaff(binData, User.Identity.Name);
+            caff.Year = CaffResult.Year;
+            caff.Hour = CaffResult.Hour;
+            caff.Creator = CaffResult.Creator;
+            caff.Day = CaffResult.Day;
+            caff.Month = CaffResult.Month;
+            caff.Minute= CaffResult.Minute;
+            caff.Ciffs = new List<Ciff>();
+            for (int i = 0; i < CaffResult.Ciffs.Count; i++)
+            {
+                List<Tag> tags = CaffResult.Ciffs[i].Tags.Select(x => new Tag() { Text = x}).ToList();
+                byte[] currentFile = System.IO.File.ReadAllBytes(@$"{User.Identity.Name}\{i+1}.bmp");
+                System.IO.File.Delete(@$"{User.Identity.Name}\{i + 1}.bmp");
+                caff.Ciffs.Add(new Ciff()
+                {
+                    Caption = CaffResult.Ciffs[i].Caption,
+                    Pixels = currentFile,
+                    Duration = CaffResult.Ciffs[i].Duration,
+                    Height = CaffResult.Ciffs[i].Height,
+                    Width = CaffResult.Ciffs[i].Width,
+                    Tags = tags
+                });  
+            }
             _caffRepository.SaveCaff(caff);
             return Json(new { success = true });
         }

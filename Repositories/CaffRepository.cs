@@ -91,8 +91,9 @@ namespace CAFFEINE.Repositories
                 var user = _db.Users.FirstOrDefault(x => x.UserName == item.UserName);
                 if(user != null)
                 {
-                    user.UserName = item.UserName;
+                    user.PhoneNumber = item.PhoneNumber;
                     _db.Users.Update(user);
+                    _db.SaveChanges();
                     var userRoles = await userManager.GetRolesAsync(user);
                     if (item.isAdmin && !userRoles.Contains("Admin"))
                     {
