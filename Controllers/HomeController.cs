@@ -17,6 +17,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
+using AnimatedGif;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace CAFFEINE.Controllers
 {
@@ -25,12 +28,13 @@ namespace CAFFEINE.Controllers
         private readonly ILogger<HomeController> _logger;
         private readonly CaffService _caffService;
         private readonly CaffRepository _caffRepository;
-
-        public HomeController(ILogger<HomeController> logger, CaffService caffService, CaffRepository caffrepository)
+        private readonly RoleManager<IdentityRole> _roleManager;
+        public HomeController(ILogger<HomeController> logger, CaffService caffService, CaffRepository caffrepository, RoleManager<IdentityRole> roleManager)
         {
             _logger = logger;
             _caffService = caffService;
             _caffRepository = caffrepository;
+            _roleManager = roleManager;
 
         }
 
@@ -40,17 +44,6 @@ namespace CAFFEINE.Controllers
             if (string.IsNullOrEmpty(creator) && string.IsNullOrEmpty(caption))
             {
                 var caffs = _caffRepository.GetAllCaff();
-
-
-
-                foreach (var item in caffs)
-                {
-                    var gif = new AnimatedGif.AnimatedGifCreator(new MemoryStream(item.Ciffs[0].Pixels), item.Ciffs[0].Duration);
-                    for (int i = 1; i < item.Ciffs.Count; i++)
-                    {
-                        gif.AddFrame(Image.FromStream(new MemoryStream(item.Ciffs[i].Pixels)), item.Ciffs[0].Duration);
-                    }
-                }
                 return View(new IndexVM()
                 {
                     creator = creator,
@@ -68,29 +61,13 @@ namespace CAFFEINE.Controllers
                     caffs = caffsFiltered
                 });
             }
-
-
-
-            /*  var caff = _caffService.ParseCaff();
-              _caffRepository.SaveCaff(caff);*/
-
-            /*foreach (var item in caffs)
-            {
-                Stream stream = new MemoryStream();
-                stream.Write(item.Ciffs[0].Pixels, 0, item.Ciffs[0].Pixels.Length);
-                using (Image image = Image.FromStream(stream, true))
-                {
-                    item.Ciffs[0].Png = image;
-                  
-                }
-            }*/
-
         }
 
         
 
 
         [HttpGet]
+        [Authorize(Roles = "Member")]
         public IActionResult Comment(int id)
         {
             if (_caffRepository.GetCaffFromId(id) != null)
@@ -104,6 +81,7 @@ namespace CAFFEINE.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Member")]
         public IActionResult Details(int id)
         {
             var caff = _caffRepository.GetCaffFromId(id);
@@ -126,6 +104,7 @@ namespace CAFFEINE.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Member")]
         public IActionResult Comment(AddCommentVM addCommentVM)
         {
             if (_caffRepository.GetCaffFromId(addCommentVM.CaffId) != null)
@@ -141,6 +120,7 @@ namespace CAFFEINE.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public IActionResult Delete(int id)
         {
             var caff = _caffRepository.GetCaffFromId(id);
@@ -186,7 +166,7 @@ namespace CAFFEINE.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Upload()
         {
-            if(this.Request.Form.Files.Count == 0)
+            if (this.Request.Form.Files.Count == 0)
             {
                 return BadRequest();
             }
@@ -205,23 +185,31 @@ namespace CAFFEINE.Controllers
             caff.Creator = CaffResult.Creator;
             caff.Day = CaffResult.Day;
             caff.Month = CaffResult.Month;
-            caff.Minute= CaffResult.Minute;
+            caff.Minute = CaffResult.Minute;
             caff.Ciffs = new List<Ciff>();
-            for (int i = 0; i < CaffResult.Ciffs.Count; i++)
+
+            using (var gif = AnimatedGif.AnimatedGif.Create($"{caff.Creator}.gif", 33))
             {
-                List<Tag> tags = CaffResult.Ciffs[i].Tags.Select(x => new Tag() { Text = x}).ToList();
-                byte[] currentFile = System.IO.File.ReadAllBytes(@$"{User.Identity.Name}\{i+1}.bmp");
-                System.IO.File.Delete(@$"{User.Identity.Name}\{i + 1}.bmp");
-                caff.Ciffs.Add(new Ciff()
+                for (int i = 0; i < CaffResult.Ciffs.Count; i++)
                 {
-                    Caption = CaffResult.Ciffs[i].Caption,
-                    Pixels = currentFile,
-                    Duration = CaffResult.Ciffs[i].Duration,
-                    Height = CaffResult.Ciffs[i].Height,
-                    Width = CaffResult.Ciffs[i].Width,
-                    Tags = tags
-                });  
+                    List<Tag> tags = CaffResult.Ciffs[i].Tags.Select(x => new Tag() { Text = x }).ToList();
+                    byte[] currentFile = System.IO.File.ReadAllBytes(@$"{User.Identity.Name}\{i + 1}.bmp");
+                    System.IO.File.Delete(@$"{User.Identity.Name}\{i + 1}.bmp");
+
+                    var img = Image.FromStream(new MemoryStream(currentFile));
+                    gif.AddFrame(img, CaffResult.Ciffs[i].Duration);
+
+                    caff.Ciffs.Add(new Ciff()
+                    {
+                        Caption = CaffResult.Ciffs[i].Caption,
+                        Tags = tags
+                    });
+                }
             }
+            byte[] gifByte = System.IO.File.ReadAllBytes(@$"{caff.Creator}.gif");
+            System.IO.File.Delete(@$"{caff.Creator}.gif");
+            caff.gifContent = gifByte;
+
             _caffRepository.SaveCaff(caff);
             return Json(new { success = true });
         }

@@ -42,7 +42,9 @@ namespace CAFFEINE.Repositories
 
         public List<Caff> GetAllCaff()
         {
-            return _db.Caffs.Include(x => x.Comments).Include(x => x.Ciffs).ThenInclude(x => x.Tags).ToList();
+            return _db.Caffs.Include(x => x.Comments).Include(x => x.Ciffs).ThenInclude(x => x.Tags).Select(x => 
+                new Caff { DB_ID = x.DB_ID, gifContent = x.gifContent, Ciffs = x.Ciffs, Comments = x.Comments, Creator = x.Creator, Day = x.Day, Hour = x.Hour, Minute = x.Minute, Month = x.Month, Year = x.Year }
+            ).ToList();
         }
 
         public List<Comment> GetAllCommentToCaff(int id)

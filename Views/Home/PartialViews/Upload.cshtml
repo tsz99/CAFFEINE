@@ -20,14 +20,14 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title">Upload</h4>
-                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <button id="closeButtonModal" type="button" class="close" data-dismiss="modal">×</button>
                 </div>
                 <div class="modal-body">
                     <INPUT id="oFile" type="file" runat="server" NAME="oFile">
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-danger button">Upload</button>
-                    <button type="button" data-dismiss="modal" class="btn btn-primary button">Cancel</button>
+                    <button id="uploadButtonModal" type="submit" class="btn btn-danger button">Upload</button>
+                    <button id="cancelButtonModal" type="button" data-dismiss="modal" class="btn btn-primary button">Cancel</button>
                 </div>
             </div>
         </div>
@@ -38,5 +38,17 @@
     function onSuccess() {
         $('#modal-placeholder > .modal').modal('hide');
         location.reload();
+    }
+
+    $(document).ready(function () {
+        $('#createModal > form')[0].addEventListener('submit', renameAndDisable)
+    });
+
+    function renameAndDisable() {
+        console.log('Invoked');
+        $('#uploadButtonModal')[0].disabled = true;
+        $('#uploadButtonModal')[0].textContent = 'Uploading...';
+        $('#closeButtonModal')[0].disabled = true;
+        $('#cancelButtonModal')[0].disabled = true;
     }
 </script>

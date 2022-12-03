@@ -17,5 +17,6 @@ namespace CAFFEINE.Data
         public int Minute { get; set; }
         public List<Comment> Comments { get; set; }
         public byte[] originalContent { get; set; } 
+        public byte[] gifContent { get; set; }
     }
 }

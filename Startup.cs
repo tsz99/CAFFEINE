@@ -17,6 +17,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using CAFFEINE.Repositories;
 using Microsoft.Extensions.Options;
+using System.Data;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Authorization;
 
 namespace CAFFEINE
 {
@@ -40,9 +44,27 @@ namespace CAFFEINE
                     .AddRoles<IdentityRole>()
                     .AddEntityFrameworkStores<ApplicationDbContext>()
                     .AddDefaultTokenProviders();
+            
             services.AddScoped<IUserClaimsPrincipalFactory<IdentityUser>, AdditionalUserClaimsPrincipalFactory>();
+            //builder.Services.AddSingleton<IAuthorizationHandler,
+            //          ContactAdministratorsAuthorizationHandler>();
+            //
+            //builder.Services.AddSingleton<IAuthorizationHandler,
+            //                      ContactManagerAuthorizationHandler>();
+            services.AddAuthorization(options =>
+            {
+                options.FallbackPolicy = new AuthorizationPolicyBuilder()
+                    .RequireAuthenticatedUser()
+                    .Build();
+            });
             services.AddAuthorization(options => options.AddPolicy("TwoFactorEnabled", x => x.RequireClaim("amr", "mfa")));
-            services.AddControllersWithViews();
+            services.AddControllersWithViews(config =>
+            {
+                var policy = new AuthorizationPolicyBuilder()
+                                 .RequireAuthenticatedUser()
+                                 .Build();
+                config.Filters.Add(new AuthorizeFilter(policy));
+            });
             services.AddScoped<CaffService>();
             services.AddScoped<CaffRepository>();
             services.AddUnobtrusiveAjax(useCdn: true, injectScriptIfNeeded: false);

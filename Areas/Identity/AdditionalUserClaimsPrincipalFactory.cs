@@ -44,6 +44,7 @@ namespace CAFFEINE.Areas.Identity
                 claims.Add(new Claim("amr", "pwd"));
             }
 
+            
             identity.AddClaims(claims);
             return principal;
         }
