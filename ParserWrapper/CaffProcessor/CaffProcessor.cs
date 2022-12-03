@@ -7,75 +7,75 @@ using static System.Math;
 
 namespace Parsing
 {
-    public class CaffProcessor
+    public static class CaffProcessor
     {
         public static CaffResult ParseCaff(byte[] caff, string folderName)
         {
-            Caff.parseCAFF(caff, caff.Length, Encoding.ASCII.GetBytes(folderName));
+            Caff.ParseCAFF(caff, caff.Length, Encoding.ASCII.GetBytes(folderName));
 
             byte[] returnBuffer;
 
             returnBuffer = new byte[calculateSizeFromByteSize(8)];
-            Caff.getCreatorLength(returnBuffer);
+            Caff.GetCreatorLength(returnBuffer);
             var creatorLength = getIntFromBuffer(returnBuffer);
 
             returnBuffer = new byte[creatorLength];
-            Caff.getCreator(returnBuffer);
+            Caff.GetCreator(returnBuffer);
             var creator = getStringFromBuffer(returnBuffer);
 
             returnBuffer = new byte[calculateSizeFromByteSize(2)];
-            Caff.getYear(returnBuffer);
+            Caff.GetYear(returnBuffer);
             var year = getIntFromBuffer(returnBuffer);
 
             returnBuffer = new byte[calculateSizeFromByteSize(1)];
-            Caff.getMonth(returnBuffer);
+            Caff.GetMonth(returnBuffer);
             var month = getIntFromBuffer(returnBuffer);
 
             returnBuffer = new byte[calculateSizeFromByteSize(1)];
-            Caff.getDay(returnBuffer);
+            Caff.GetDay(returnBuffer);
             var day = getIntFromBuffer(returnBuffer);
 
             returnBuffer = new byte[calculateSizeFromByteSize(1)];
-            Caff.getHour(returnBuffer);
+            Caff.GetHour(returnBuffer);
             var hour = getIntFromBuffer(returnBuffer);
 
             returnBuffer = new byte[calculateSizeFromByteSize(1)];
-            Caff.getMinute(returnBuffer);
+            Caff.GetMinute(returnBuffer);
             var minute = getIntFromBuffer(returnBuffer);
 
             returnBuffer = new byte[calculateSizeFromByteSize(8)];
-            Caff.getNumberOfCiffs(returnBuffer);
+            Caff.GetNumberOfCiffs(returnBuffer);
             var numberOfCiffs = getIntFromBuffer(returnBuffer);
 
             var ciffResults = new List<CiffResult>();
             for (int i = 0; i < numberOfCiffs; i++)
             {
                 returnBuffer = new byte[calculateSizeFromByteSize(8)];
-                Caff.getDurationOfCiff(returnBuffer, 0);
+                Caff.GetDurationOfCiff(returnBuffer, 0);
                 var duration = getIntFromBuffer(returnBuffer);
 
                 returnBuffer = new byte[calculateSizeFromByteSize(8)];
-                Caff.getWidthOfCiff(returnBuffer, 0);
+                Caff.GetWidthOfCiff(returnBuffer, 0);
                 var width = getIntFromBuffer(returnBuffer);
 
                 returnBuffer = new byte[calculateSizeFromByteSize(8)];
-                Caff.getHeightOfCiff(returnBuffer, 0);
+                Caff.GetHeightOfCiff(returnBuffer, 0);
                 var height = getIntFromBuffer(returnBuffer);
 
                 returnBuffer = new byte[8];
-                Caff.getImageName(returnBuffer, 0);
+                Caff.GetImageName(returnBuffer, 0);
                 var imageName = getStringFromBuffer(returnBuffer).TrimEnd('\0');
 
                 returnBuffer = new byte[calculateSizeFromByteSize(8)];
-                Caff.getCaptionAndTagsLength(returnBuffer, 0);
+                Caff.GetCaptionAndTagsLength(returnBuffer, 0);
                 var captionAndTagsLength = getIntFromBuffer(returnBuffer);
 
                 returnBuffer = new byte[captionAndTagsLength];
-                Caff.getCaption(returnBuffer, 0);
+                Caff.GetCaption(returnBuffer, 0);
                 var caption = getStringFromBuffer(returnBuffer).TrimEnd('\0');
 
                 returnBuffer = new byte[captionAndTagsLength];
-                Caff.getTags(returnBuffer, 0);
+                Caff.GetTags(returnBuffer, 0);
                 var tags = getStringFromBuffer(returnBuffer);
                 var tagArray = tags.Split('\n');
 
@@ -102,7 +102,7 @@ namespace Parsing
                 Ciffs = ciffResults
             };
 
-            Caff.dispose();
+            Caff.Dispose();
 
             return caffResult;
         }
