@@ -11,16 +11,13 @@ namespace CAFFEINE.Areas.Identity
     public class AdditionalUserClaimsPrincipalFactory :
         UserClaimsPrincipalFactory<IdentityUser>
     {
-        private UserManager<IdentityUser> userManager;
-        private RoleManager<IdentityRole> roleManager;
+        private readonly UserManager<IdentityUser> userManager;
         public AdditionalUserClaimsPrincipalFactory(
             UserManager<IdentityUser> userManager,
-            RoleManager<IdentityRole> roleManager,
             IOptions<IdentityOptions> optionsAccessor)
             : base(userManager, optionsAccessor)
         {
             this.userManager = userManager;
-            this.roleManager = roleManager;
         }
 
         public async override Task<ClaimsPrincipal> CreateAsync(IdentityUser user)
