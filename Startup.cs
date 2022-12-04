@@ -49,7 +49,6 @@ namespace CAFFEINE
             services.AddAuthorization(options => options.AddPolicy("Admin", x => x.RequireClaim("Admin", "Admin")));
             services.AddAuthorization(options => options.AddPolicy("Member", x => x.RequireClaim("Member", "Member")));
             services.AddControllersWithViews();
-            services.AddLogging(x => x.AddSerilog(dispose: true));
             services.AddScoped<CaffService>();
             services.AddScoped<CaffRepository>();
             services.AddUnobtrusiveAjax(useCdn: true, injectScriptIfNeeded: false);
