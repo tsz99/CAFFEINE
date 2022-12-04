@@ -1,0 +1,42 @@
+﻿@{
+    Layout = null;
+}
+@using CAFFEINE.ViewModels
+@model DeleteVM;
+
+@Html.RenderUnobtrusiveAjaxScript()
+
+<div class="modal fade" tabindex="-1" id="createModal"
+     data-keyboard="false" data-backdrop="static">
+    @using (Html.AjaxBeginForm("Delete", "Home", new AjaxOptions
+     {
+         OnSuccess = "onSuccess",
+         HttpMethod = "Post"
+     }))
+    {
+        @Html.HiddenFor(model => model.CaffId)
+        @Html.AntiForgeryToken()
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Delete</h4>
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                </div>
+                <div class="modal-body">
+                    <p>This will delete the CAFF. Are you sure?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-danger button">Delete</button>
+                    <button type="button" data-dismiss="modal" class="btn btn-dark button">Cancel</button>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<script>
+    function onSuccess() {
+        $('#modal-placeholder > .modal').modal('hide');
+        location.reload();
+    }
+</script>

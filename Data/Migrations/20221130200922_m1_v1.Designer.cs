@@ -4,14 +4,16 @@ using CAFFEINE.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CAFFEINE.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221130200922_m1_v1")]
+    partial class m1_v1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -44,15 +46,29 @@ namespace CAFFEINE.Data.Migrations
                     b.Property<int>("Year")
                         .HasColumnType("int");
 
-                    b.Property<byte[]>("gifContent")
-                        .HasColumnType("varbinary(max)");
-
-                    b.Property<byte[]>("originalContent")
-                        .HasColumnType("varbinary(max)");
-
                     b.HasKey("DB_ID");
 
                     b.ToTable("Caffs");
+                });
+
+            modelBuilder.Entity("CAFFEINE.Data.Caption", b =>
+                {
+                    b.Property<int>("DB_ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("CiffDB_ID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("text")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("DB_ID");
+
+                    b.HasIndex("CiffDB_ID");
+
+                    b.ToTable("Captions");
                 });
 
             modelBuilder.Entity("CAFFEINE.Data.Ciff", b =>
@@ -64,9 +80,6 @@ namespace CAFFEINE.Data.Migrations
 
                     b.Property<int?>("CaffDB_ID")
                         .HasColumnType("int");
-
-                    b.Property<string>("Caption")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Duration")
                         .HasColumnType("int");
@@ -94,14 +107,11 @@ namespace CAFFEINE.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("CaffDB_ID")
+                    b.Property<int?>("CaffDB_ID")
                         .HasColumnType("int");
 
                     b.Property<string>("Creator")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("DT_Created")
-                        .HasColumnType("datetime2");
 
                     b.Property<string>("Text")
                         .HasColumnType("nvarchar(max)");
@@ -333,6 +343,13 @@ namespace CAFFEINE.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("CAFFEINE.Data.Caption", b =>
+                {
+                    b.HasOne("CAFFEINE.Data.Ciff", null)
+                        .WithMany("Caption")
+                        .HasForeignKey("CiffDB_ID");
+                });
+
             modelBuilder.Entity("CAFFEINE.Data.Ciff", b =>
                 {
                     b.HasOne("CAFFEINE.Data.Caff", null)
@@ -344,9 +361,7 @@ namespace CAFFEINE.Data.Migrations
                 {
                     b.HasOne("CAFFEINE.Data.Caff", null)
                         .WithMany("Comments")
-                        .HasForeignKey("CaffDB_ID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CaffDB_ID");
                 });
 
             modelBuilder.Entity("CAFFEINE.Data.Tag", b =>

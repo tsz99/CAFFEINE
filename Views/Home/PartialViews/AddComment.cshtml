@@ -1,0 +1,58 @@
+﻿@{
+    Layout = null;
+}
+
+@using CAFFEINE.ViewModels
+@using System.Web;
+@using Newtonsoft.Json;
+@model AddCommentVM;
+
+@Html.RenderUnobtrusiveAjaxScript()
+
+<div class="modal fade" tabindex="-1" id="createModal"
+     data-keyboard="false" data-backdrop="static">
+    @using (Html.AjaxBeginForm("Comment", "Home", new AjaxOptions
+     {
+         OnSuccess = "onSuccess",
+         OnFailure = "onFailure",
+         HttpMethod = "Post"
+     }))
+    {
+        @Html.ValidationSummary()
+        @Html.HiddenFor(model => model.CaffId)
+        @Html.AntiForgeryToken()
+        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">Add comment</h3>
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                </div>
+                <div class="modal-body m-3">
+                    <div class="input-group input-group-lg mb-3">
+                        @Html.TextBoxFor(model => model.Text, new { @placeholder = "Comment Message", @class = "form-control", @required = true})
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-dark button button4">Add Comment</button>
+                    <button type="button" data-dismiss="modal" class="btn btn-secondary button button4">Cancel</button>
+                </div>
+
+            </div>
+        </div>
+    }
+</div>
+
+
+<script>
+
+    function onSuccess() {
+        $('#modal-placeholder > .modal').modal('hide');
+        location.reload();
+    }
+
+    function onFailure() {
+        alert('Please fill all requred fields');
+    }
+
+</script>

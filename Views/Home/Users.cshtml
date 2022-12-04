@@ -1,0 +1,40 @@
+﻿@using CAFFEINE.Data;
+@model List<UserData>
+@{
+    ViewData["Title"] = "User Data";
+}
+<h1>@ViewData["Title"]</h1>
+@Html.RenderUnobtrusiveAjaxScript()
+@if (User.Identity.IsAuthenticated)
+{
+    @using (Html.AjaxBeginForm("SaveUsers", "Home", new AjaxOptions
+                {
+                    HttpMethod = "Post"
+                }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="container table-responsive mt-3">
+            <table description="User table" class="table table-bordered table-hover table-responsive">
+                <thead class="bg-secondary text-light">
+                    <tr scope="row" >
+                        <th scope="col" class="text-center col-4 px-5"><h5>Phone Number</h5></th>
+                        <th scope="col" class="text-center col-4 px-5"><h5>Add new phone number</h5></th>
+                        <th scope="col" class="text-center col-4 px-5"><h5>Is admin</h5> </th>
+                   </tr>
+                </thead>
+                <tbody>
+                    @for (int i = 0; i < Model.Count; i++)
+                    {
+                        <tr scope="row" >
+                           @Html.HiddenFor(model => model[i].UserName)
+                            <td scope="col" class="text-center col-4 px-5"> @Html.DisplayTextFor(model => model[i].UserName)</td>
+                            <td scope="col" class="text-center col-4 px-5"> @Html.TextBoxFor(model =>  model[i].PhoneNumber) </td>
+                            <td scope="col" class="text-center col-4 px-5"> @Html.CheckBoxFor(model =>  model[i].isAdmin)    </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <button type="submit" class="btn btn-dark mt-3 px-5 py-1 button button4"><h4>Save</h4></button>
+        </div>
+    }
+}
