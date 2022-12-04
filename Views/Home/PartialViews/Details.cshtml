@@ -29,9 +29,9 @@
                         @foreach (var comment in Model.Comments)
                         {
                             <div class="row w-100 border-bottom pt-1">
-                                <div class="col-3">@comment.DT_Created</div> 
-                                <div class="col-3">@comment.Creator:</div> 
-                                <div class="col-6"> @comment.Text</div>
+                                <div class="col-md-6 col-lg-3">@comment.DT_Created</div>
+                                <div class="col-md-6 col-lg-3">@comment.Creator:</div>
+                                <div class="col-md-12 col-lg-6"> @comment.Text</div>
                             </div>
                             <br/>
                         }
